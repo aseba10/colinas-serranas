@@ -1,0 +1,177 @@
+import React, { useState, useEffect } from 'react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { Button } from '@/components/ui/button';
+import { Menu, X, Hand } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
+
+function Header() {
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  const scrollToTop = () => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    };
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 20);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const navLinks = [
+    { path: '/', label: 'Inicio' },
+    { path: '/cabana_premium_tandil', label: 'Cabañas Premium' },
+    { path: '/cabana_duplex_tandil', label: 'Cabañas Dúplex' },
+    { path: '/#contacto', label: 'Contacto' },
+  ];
+
+  const isActive = (path) => {
+    if (path === '/') return location.pathname === '/';
+    return location.pathname === path;
+  };
+
+  
+  const handleContactClick = (e) => {
+    e.preventDefault();
+    if (location.pathname !== '/') {
+      navigate('/');
+      setTimeout(() => {
+        document.getElementById('contacto')?.scrollIntoView({ behavior: 'smooth' });
+      }, 100);
+    } else {
+      document.getElementById('contacto')?.scrollIntoView({ behavior: 'smooth' });
+    }
+    setIsMobileMenuOpen(false);
+  };
+
+return (
+    <header
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        isScrolled
+          ? 'bg-background/95 backdrop-blur-md shadow-md'
+          : 'bg-transparent'
+      }`}
+    >
+      <div className="section-container">
+        <div className="flex items-center justify-between h-20">
+          
+          {/* LOGO */}
+          <Link
+            to="/"
+            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+            className="flex items-center gap-2 group"
+          >
+            <img
+              src="/images/logo-colinas.png"
+              alt="Colinas Serranas"
+              className="h-10 w-auto group-hover:scale-110 transition-transform duration-200"
+            />
+            <span className="text-xl font-bold text-white">
+              Colinas Serranas
+            </span>
+          </Link>
+
+          {/* NAV DESKTOP */}
+          <nav className="hidden md:flex items-center gap-8">
+            {navLinks.map((link) => {
+              const className = `text-sm font-medium transition-colors duration-200 relative ${
+                isActive(link.path)
+                  ? 'text-primary'
+                  : isScrolled
+                  ? 'text-foreground hover:text-primary'
+                  : 'text-white/90 hover:text-white'
+              }`;
+
+              // CONTACTO (anchor)
+              if (link.path.includes('#')) {
+                return (
+                  <a
+                    key={link.path}
+                    href={link.path}
+                    className={className}
+                  >
+                    {link.label}
+                  </a>
+                );
+              }
+
+              // INICIO (scroll top extra)
+              if (link.label === 'Inicio') {
+                return (
+                  <Link
+                    key={link.path}
+                    to="/"
+                    onClick={() =>
+                      window.scrollTo({ top: 0, behavior: 'smooth' })
+                    }
+                    className={className}
+                  >
+                    Inicio
+
+                    {isActive('/') && (
+                      <motion.div
+                        layoutId="activeNav"
+                        className="absolute -bottom-1 left-0 right-0 h-0.5 bg-primary"
+                        transition={{
+                          type: 'spring',
+                          stiffness: 380,
+                          damping: 30,
+                        }}
+                      />
+                    )}
+                  </Link>
+                );
+              }
+
+              // DEFAULT LINKS
+              return (
+                <Link
+                  key={link.path}
+                  to={link.path}
+                  className={className}
+                >
+                  {link.label}
+
+                  {isActive(link.path) && (
+                    <motion.div
+                      layoutId="activeNav"
+                      className="absolute -bottom-1 left-0 right-0 h-0.5 bg-primary"
+                      transition={{
+                        type: 'spring',
+                        stiffness: 380,
+                        damping: 30,
+                      }}
+                    />
+                  )}
+                </Link>
+              );
+            })}
+          </nav>
+
+          {/* BOTÓN RESERVA */}
+          <div className="hidden md:block">
+            <Button
+              asChild
+              className="bg-primary text-primary-foreground hover:bg-primary/90"
+            >
+              <a
+                href="https://wubook.net/nneb/bk?f=today&n=1&ep=45e55843&board=bb&o=1.0.0.0"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Reservar ahora
+              </a>
+            </Button>
+          </div>
+
+        </div>
+      </div>
+    </header>
+  );
+}
+
+export default Header;

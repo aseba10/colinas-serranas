@@ -1,0 +1,141 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=DM+Sans:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 30 20% 97%;
+    --foreground: 25 15% 15%;
+    --primary: 15 65% 55%;
+    --primary-foreground: 30 20% 97%;
+    --secondary: 140 40% 45%;
+    --secondary-foreground: 30 20% 97%;
+    --accent: 35 75% 60%;
+    --accent-foreground: 25 15% 15%;
+    --muted: 30 10% 90%;
+    --muted-foreground: 25 10% 40%;
+    --card: 30 15% 98%;
+    --card-foreground: 25 15% 15%;
+    --popover: 30 15% 98%;
+    --popover-foreground: 25 15% 15%;
+    --border: 30 15% 85%;
+    --input: 30 15% 85%;
+    --ring: 15 65% 55%;
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 98%;
+    --radius: 0.75rem;
+    --sidebar-background: 30 20% 97%;
+    --sidebar-foreground: 25 15% 15%;
+    --sidebar-primary: 15 65% 55%;
+    --sidebar-primary-foreground: 30 20% 97%;
+    --sidebar-accent: 30 10% 90%;
+    --sidebar-accent-foreground: 25 15% 15%;
+    --sidebar-border: 30 15% 85%;
+    --sidebar-ring: 15 65% 55%;
+  }
+
+  .dark {
+    --background: 25 20% 10%;
+    --foreground: 30 15% 95%;
+    --primary: 15 65% 55%;
+    --primary-foreground: 30 20% 97%;
+    --secondary: 140 40% 45%;
+    --secondary-foreground: 30 20% 97%;
+    --accent: 35 75% 60%;
+    --accent-foreground: 25 15% 15%;
+    --muted: 25 15% 20%;
+    --muted-foreground: 30 10% 60%;
+    --card: 25 18% 12%;
+    --card-foreground: 30 15% 95%;
+    --popover: 25 18% 12%;
+    --popover-foreground: 30 15% 95%;
+    --border: 25 15% 25%;
+    --input: 25 15% 25%;
+    --ring: 15 65% 55%;
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 98%;
+    --sidebar-background: 25 20% 10%;
+    --sidebar-foreground: 30 15% 95%;
+    --sidebar-primary: 15 65% 55%;
+    --sidebar-primary-foreground: 30 20% 97%;
+    --sidebar-accent: 25 15% 20%;
+    --sidebar-accent-foreground: 30 15% 95%;
+    --sidebar-border: 25 15% 25%;
+    --sidebar-ring: 15 65% 55%;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: "DM Sans", sans-serif;
+    overflow-x: clip;
+    font-variant-numeric: tabular-nums;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: "Playfair Display", serif;
+    text-wrap: balance;
+    letter-spacing: -0.02em;
+  }
+
+  h1 {
+    @apply text-4xl md:text-5xl lg:text-6xl font-bold leading-tight;
+  }
+
+  h2 {
+    @apply text-2xl md:text-3xl lg:text-4xl font-semibold leading-snug;
+  }
+
+  h3 {
+    @apply text-xl md:text-2xl font-semibold leading-snug;
+  }
+
+  p {
+    @apply leading-relaxed;
+  }
+}
+
+@layer components {
+  .section-container {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  .section-spacing {
+    @apply py-16 md:py-20 lg:py-24;
+  }
+
+  .btn-primary {
+    @apply bg-primary text-primary-foreground hover:bg-primary/90 active:scale-[0.98] transition-all duration-200;
+  }
+
+  .btn-secondary {
+    @apply bg-secondary text-secondary-foreground hover:bg-secondary/90 active:scale-[0.98] transition-all duration-200;
+  }
+
+  .card-elevated {
+    @apply bg-card rounded-2xl shadow-lg p-6 transition-all duration-300;
+  }
+
+  .card-subtle {
+    @apply bg-muted rounded-xl p-6 transition-all duration-300;
+  }
+
+  .hero-overlay {
+    background: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.5));
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
