@@ -76,27 +76,27 @@ function CabanaDuplexPage() {
 
   const galleryImages = [
       {
-        src: '/images/Cabañas Dúplex/exterior.png',
+        src: '/images/Cabañas_Dúplex/exterior.png',
         alt: 'Hidromasaje'
       },
       {
-        src: '/images/Cabañas Dúplex/comedor2.png',
+        src: '/images/Cabañas_Dúplex/comedor2.png',
         alt: 'Dormitorio'
       },
       {
-        src: '/images/Cabañas Dúplex/comedor.png',
+        src: '/images/Cabañas_Dúplex/comedor.png',
         alt: 'Comedor'
       },
       {
-        src: '/images/Cabañas Dúplex/baño.png',
+        src: '/images/Cabañas_Dúplex/baño.png',
         alt: 'Cocina'
       },
       {
-        src: '/images/Cabañas Dúplex/cocina.png',
+        src: '/images/Cabañas_Dúplex/cocina.png',
         alt: 'Exterior de cabaña'
       },
       {
-        src: '/images/Cabañas Dúplex/Captura de pantalla de 2024-09-06 19-47-42.png',
+        src: '/images/Cabañas_Dúplex/Captura de pantalla de 2024-09-06 19-47-42.png',
         alt: 'Exterior de cabaña'
       }
     ];
@@ -114,7 +114,7 @@ function CabanaDuplexPage() {
     "@type": "Accommodation",
     "name": "Cabaña Dúplex - Colinas Serranas",
     "description": "Cabaña dúplex en dos niveles, ideal para familias. Capacidad 2-5 personas más cuna, cocina equipada, desayuno incluido.",
-    "image": "images/Cabañas Dúplex/dormitorio.png",
+    "image": "images/Cabañas_Dúplex/dormitorio.png",
     "occupancy": {
       "@type": "QuantitativeValue",
       "minValue": 2,
@@ -139,7 +139,7 @@ function CabanaDuplexPage() {
         
         <meta property="og:title" content="Cabaña Dúplex para Familias en Tandil - Colinas Serranas" />
         <meta property="og:description" content="Cabaña dúplex en dos niveles. Ideal para familias. Desayuno incluido, espaciosa y cómoda." />
-        <meta property="og:image" content="images/Cabañas Dúplex/dormitorio.png" />
+        <meta property="og:image" content="images/Cabañas_Dúplex/dormitorio.png" />
         <meta property="og:url" content="https://colinasserranas.com/cabana_duplex_tandil" />
         
         <script type="application/ld+json">
@@ -154,7 +154,7 @@ function CabanaDuplexPage() {
         <section className="relative min-h-[70vh] flex items-center justify-center">
           <div className="absolute inset-0">
             <img
-              src="public/images/Cabañas Dúplex/dormitorio.png"
+              src="public/images/Cabañas_Dúplex/dormitorio.png"
               alt="Cabaña dúplex para familias en Tandil"
               className="w-full h-full object-cover"
             />
