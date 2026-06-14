@@ -173,44 +173,44 @@ function HomePage() {
     name: 'premium',
     label: 'Cabañas Premium',
     images: [{
-      src: 'images/Cabañas_Premium/hidro1.png',
+      src: 'images/Cabanas_Premium/hidro1.png',
       alt: 'Hidromasaje para dos personas'
     }, {
-      src: 'images/Cabañas_Premium/dormitorio.png',
+      src: 'images/Cabanas_Premium/dormitorio.png',
       alt: 'Dormitorio principal cabaña premium'
     }, {
-      src: 'images/Cabañas_Premium/cocina.png',
+      src: 'images/Cabanas_Premium/cocina.png',
       alt: 'Cocina equipada cabaña premium'
     }, {
-      src: 'images/Cabañas_Premium/comedor.png',
+      src: 'images/Cabanas_Premium/comedor.png',
       alt: 'Cabaña hasta para cuatro personas'
     }, {
-      src: 'images/Cabañas_Premium/baño.png',
+      src: 'images/Cabanas_Premium/baño.png',
       alt: 'Baño cabaña premium'
     }, {
-      src: 'images/Cabañas_Premium/exterior.png',
+      src: 'images/Cabanas_Premium/exterior.png',
       alt: 'Exterior cabaña premium'
     }]
   }, {
     name: 'duplex',
     label: 'Cabañas Duplex',
     images: [{
-      src: 'images/Cabañas_Duplex/dormitorio.png',
+      src: 'images/Cabanas_Duplex/dormitorio.png',
       alt: 'Dormitorio cabaña duplex'
     }, {
-      src: 'images/Cabañas_Duplex/comedor2.png',
+      src: 'images/Cabanas_Duplex/comedor2.png',
       alt: 'Sala de estar cabaña duplex'
     }, {
-      src: 'images/Cabañas_Duplex/cocina.png',
+      src: 'images/Cabanas_Duplex/cocina.png',
       alt: 'Cocina cabaña duplex'
     }, {
-      src: 'images/Cabañas_Duplex/comedor.png',
+      src: 'images/Cabanas_Duplex/comedor.png',
       alt: 'Cabaña hasta para cinco personas'
     }, {
-      src: 'images/Cabañas_Duplex/baño.png',
+      src: 'images/Cabanas_Duplex/baño.png',
       alt: 'Baño cabaña duplex'
     }, {
-      src: 'images/Cabañas_Duplex/exterior.png',
+      src: 'images/Cabanas_Duplex/exterior.png',
       alt: 'Exterior cabaña duplex'
     }]
   }, {
