@@ -34,13 +34,13 @@ function CabanaDuplexPage() {
     {
       name: 'Lucía Torres',
       rating: 5,
-      text: 'Perfecta para ir con niños. La cabaña dúplex es muy espaciosa y los chicos se divirtieron muchísimo en el parque. Tiene todo lo necesario.',
+      text: 'Perfecta para ir con niños. La cabaña duplex es muy espaciosa y los chicos se divirtieron muchísimo en el parque. Tiene todo lo necesario.',
       date: 'Marzo 2026',
     },
     {
       name: 'Ana Martínez',
       rating: 5,
-      text: 'Excelente para familias. La distribución en dos niveles es muy práctica. La cocina está súper equipada y el desayuno delicioso.',
+      text: 'Excelente para familias. La distribución en dos niveles es muy práctica. La cocina está super equipada y el desayuno delicioso.',
       date: 'Enero 2026',
     },
     {
@@ -53,12 +53,12 @@ function CabanaDuplexPage() {
 
   const faqs = [
     {
-      question: '¿Cómo está distribuida la cabaña dúplex?',
+      question: '¿Cómo está distribuida la cabaña duplex?',
       answer: 'La planta alta cuenta con la habitación principal con cama matrimonial. La planta baja tiene cocina completa, comedor, y baño con bañera. Es una distribución muy práctica para familias.',
     },
     {
       question: '¿Cuántas personas pueden alojarse?',
-      answer: 'La cabaña dúplex tiene capacidad para 2 a 5 personas más cuna. Cuenta con una cama matrimonial en la habitación principal y podemos agregar camas extras o cuna sin cargo adicional.',
+      answer: 'La cabaña duplex tiene capacidad para 2 a 5 personas más cuna. Cuenta con una cama matrimonial en la habitación principal y podemos agregar camas extras o cuna sin cargo adicional.',
     },
     {
       question: '¿Es segura para niños pequeños?',
@@ -70,33 +70,33 @@ function CabanaDuplexPage() {
     },
     {
       question: '¿Hay espacio para cocinar?',
-      answer: 'Sí, la cocina de la cabaña dúplex es muy amplia y está totalmente equipada: heladera, microondas, horno, utensilios, vajilla y todo lo necesario para preparar comidas completas.',
+      answer: 'Sí, la cocina de la cabaña duplex es muy amplia y está totalmente equipada: heladera, microondas, horno, utensilios, vajilla y todo lo necesario para preparar comidas completas.',
     },
   ];
 
   const galleryImages = [
       {
-        src: '/images/Cabañas_Dúplex/exterior.png',
+        src: '/images/Cabañas_Duplex/exterior.png',
         alt: 'Hidromasaje'
       },
       {
-        src: '/images/Cabañas_Dúplex/comedor2.png',
+        src: '/images/Cabañas_Duplex/comedor2.png',
         alt: 'Dormitorio'
       },
       {
-        src: '/images/Cabañas_Dúplex/comedor.png',
+        src: '/images/Cabañas_Duplex/comedor.png',
         alt: 'Comedor'
       },
       {
-        src: '/images/Cabañas_Dúplex/baño.png',
+        src: '/images/Cabañas_Duplex/baño.png',
         alt: 'Cocina'
       },
       {
-        src: '/images/Cabañas_Dúplex/cocina.png',
+        src: '/images/Cabañas_Duplex/cocina.png',
         alt: 'Exterior de cabaña'
       },
       {
-        src: '/images/Cabañas_Dúplex/Captura de pantalla de 2024-09-06 19-47-42.png',
+        src: '/images/Cabañas_Duplex/Captura de pantalla de 2024-09-06 19-47-42.png',
         alt: 'Exterior de cabaña'
       }
     ];
@@ -112,9 +112,9 @@ function CabanaDuplexPage() {
   const schemaMarkup = {
     "@context": "https://schema.org",
     "@type": "Accommodation",
-    "name": "Cabaña Dúplex - Colinas Serranas",
-    "description": "Cabaña dúplex en dos niveles, ideal para familias. Capacidad 2-5 personas más cuna, cocina equipada, desayuno incluido.",
-    "image": "https://colinas-serranas.vercel.app/images/Cabañas_Dúplex/dormitorio.png",
+    "name": "Cabaña Duplex - Colinas Serranas",
+    "description": "Cabaña duplex en dos niveles, ideal para familias. Capacidad 2-5 personas más cuna, cocina equipada, desayuno incluido.",
+    "image": "https://colinas-serranas.vercel.app/images/Cabañas_Duplex/dormitorio.png",
     "occupancy": {
       "@type": "QuantitativeValue",
       "minValue": 2,
@@ -132,14 +132,14 @@ function CabanaDuplexPage() {
   return (
     <>
       <Helmet>
-        <title>Cabaña Dúplex para Familias en Tandil - Colinas Serranas</title>
-        <meta name="description" content="Cabaña dúplex en dos niveles en Tandil. Ideal para familias. Capacidad 2-5 personas más cuna, cocina equipada, desayuno incluido. Espaciosa y cómoda." />
-        <meta name="keywords" content="cabaña dúplex tandil, cabaña familiar tandil, alojamiento familias tandil, cabaña con niños tandil" />
+        <title>Cabaña Duplex para Familias en Tandil - Colinas Serranas</title>
+        <meta name="description" content="Cabaña duplex en dos niveles en Tandil. Ideal para familias. Capacidad 2-5 personas más cuna, cocina equipada, desayuno incluido. Espaciosa y cómoda." />
+        <meta name="keywords" content="cabaña duplex tandil, cabaña familiar tandil, alojamiento familias tandil, cabaña con niños tandil" />
         <link rel="canonical" href="https://colinasserranas.com/cabana_duplex_tandil" />
         
-        <meta property="og:title" content="Cabaña Dúplex para Familias en Tandil - Colinas Serranas" />
-        <meta property="og:description" content="Cabaña dúplex en dos niveles. Ideal para familias. Desayuno incluido, espaciosa y cómoda." />
-        <meta property="og:image" content="images/Cabañas_Dúplex/dormitorio.png" />
+        <meta property="og:title" content="Cabaña Duplex para Familias en Tandil - Colinas Serranas" />
+        <meta property="og:description" content="Cabaña duplex en dos niveles. Ideal para familias. Desayuno incluido, espaciosa y cómoda." />
+        <meta property="og:image" content="images/Cabañas_Duplex/dormitorio.png" />
         <meta property="og:url" content="https://colinasserranas.com/cabana_duplex_tandil" />
         
         <script type="application/ld+json">
@@ -154,8 +154,8 @@ function CabanaDuplexPage() {
         <section className="relative min-h-[70vh] flex items-center justify-center">
           <div className="absolute inset-0">
             <img
-              src="public/images/Cabañas_Dúplex/dormitorio.png"
-              alt="Cabaña dúplex para familias en Tandil"
+              src="public/images/Cabañas_Duplex/dormitorio.png"
+              alt="Cabaña duplex para familias en Tandil"
               className="w-full h-full object-cover"
             />
             <div className="absolute inset-0 hero-overlay" />
@@ -167,7 +167,7 @@ function CabanaDuplexPage() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
             >
-              <h1 className="mb-6">Cabañas Dúplex</h1>
+              <h1 className="mb-6">Cabañas Duplex</h1>
               <p className="text-xl md:text-2xl mb-8 max-w-3xl mx-auto leading-relaxed">
                 Espaciosas cabañas en dos niveles, perfectas para familias
               </p>
@@ -184,7 +184,7 @@ function CabanaDuplexPage() {
                 <WhatsAppButton
                   text="Consultar disponibilidad"
                   className="text-lg px-8"
-                  message="Hola, me interesa reservar una Cabaña Dúplex en Colinas Serranas. ¿Podrían brindarme información sobre disponibilidad y tarifas?"
+                  message="Hola, me interesa reservar una Cabaña Duplex en Colinas Serranas. ¿Podrían brindarme información sobre disponibilidad y tarifas?"
                 />
               </div>
             </motion.div>
@@ -200,16 +200,16 @@ function CabanaDuplexPage() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.6 }}
               >
-                <h2 className="mb-6">Sobre la cabaña dúplex</h2>
+                <h2 className="mb-6">Sobre la cabaña duplex</h2>
                 <p className="text-lg text-muted-foreground leading-relaxed mb-6">
-                  Nuestras cabañas dúplex están diseñadas especialmente para familias que buscan 
+                  Nuestras cabañas duplex están diseñadas especialmente para familias que buscan 
                   espacio, comodidad y funcionalidad. Con dos niveles bien distribuidos, ofrecen 
                   amplitud y privacidad para todos los integrantes de la familia.
                 </p>
                 <p className="text-lg text-muted-foreground leading-relaxed mb-6">
                   La planta alta cuenta con la habitación principal con cama matrimonial, mientras 
                   que la planta baja ofrece una cocina totalmente equipada, comedor amplio, sala 
-                  de estar y baño con bañera. Podemos agregar camas extras o cuna según tus necesidades, 
+                  de estar y baño con bañera. Podemos agregar camas extras o cuna segun tus necesidades, 
                   sin cargo adicional.
                 </p>
                 <div className="bg-secondary/10 rounded-xl p-6 border border-secondary/20">
@@ -275,7 +275,7 @@ function CabanaDuplexPage() {
                     <WhatsAppButton
                       text="Consultar por WhatsApp"
                       className="w-full"
-                      message="Hola, me interesa la Cabaña Dúplex. ¿Podrían brindarme más información?"
+                      message="Hola, me interesa la Cabaña Duplex. ¿Podrían brindarme más información?"
                     />
                   </div>
                 </div>
@@ -321,7 +321,7 @@ function CabanaDuplexPage() {
             >
               <h2 className="mb-4">Galería de fotos</h2>
               <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                Conoce cada detalle de nuestras cabañas dúplex
+                Conoce cada detalle de nuestras cabañas duplex
               </p>
             </motion.div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -367,7 +367,7 @@ function CabanaDuplexPage() {
             >
               <h2 className="mb-4">Opiniones de huéspedes</h2>
               <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                Lo que dicen las familias que ya disfrutaron nuestras cabañas dúplex
+                Lo que dicen las familias que ya disfrutaron nuestras cabañas duplex
               </p>
             </motion.div>
             <div className="columns-1 md:columns-2 lg:columns-3 gap-6">
@@ -395,7 +395,7 @@ function CabanaDuplexPage() {
             >
               <h2 className="mb-4">Preguntas frecuentes</h2>
               <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                Resolvemos tus dudas sobre las cabañas dúplex
+                Resolvemos tus dudas sobre las cabañas duplex
               </p>
             </motion.div>
             <div className="max-w-3xl mx-auto">
@@ -428,7 +428,7 @@ function CabanaDuplexPage() {
               transition={{ duration: 0.5 }}
             >
               <Home className="w-16 h-16 mx-auto mb-6" />
-              <h2 className="mb-4">Reserva tu cabaña dúplex</h2>
+              <h2 className="mb-4">Reserva tu cabaña duplex</h2>
               <p className="text-xl mb-8 max-w-2xl mx-auto leading-relaxed opacity-90">
                 Vive unas vacaciones familiares inolvidables en las sierras de Tandil
               </p>
@@ -450,7 +450,7 @@ function CabanaDuplexPage() {
                   className="bg-transparent text-secondary-foreground border-secondary-foreground hover:bg-secondary-foreground/10 active:scale-[0.98] transition-all duration-200 text-lg px-8"
                 >
                   <a
-                    href={`https://wa.me/5492494467441?text=${encodeURIComponent('Hola, me interesa reservar una Cabaña Dúplex.')}`}
+                    href={`https://wa.me/5492494467441?text=${encodeURIComponent('Hola, me interesa reservar una Cabaña Duplex.')}`}
                     target="_blank"
                     rel="noopener noreferrer"
                   >

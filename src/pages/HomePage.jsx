@@ -136,7 +136,7 @@ function HomePage() {
   }, {
     name: 'Ana Martínez',
     rating: 5,
-    text: 'La cabaña dúplex es perfecta para familias. Muy espaciosa y bien equipada. La piscina es un plus en verano.',
+    text: 'La cabaña duplex es perfecta para familias. Muy espaciosa y bien equipada. La piscina es un plus en verano.',
     date: 'Enero 2026'
   }, {
     name: 'Diego Ramírez',
@@ -157,8 +157,8 @@ function HomePage() {
     question: '¿La piscina está disponible todo el año?',
     answer: 'La piscina es al aire libre y está disponible durante la temporada de verano (diciembre a marzo). Fuera de temporada, permanece cerrada.'
   }, {
-    question: '¿Cuál es la diferencia entre las cabañas Premium y Dúplex?',
-    answer: 'Las Premium son ideales para parejas, tienen jacuzzi doble y máxima privacidad. Las Dúplex son más amplias, en dos niveles, perfectas para familias de hasta 5 personas más cuna.'
+    question: '¿Cuál es la diferencia entre las cabañas Premium y Duplex?',
+    answer: 'Las Premium son ideales para parejas, tienen jacuzzi doble y máxima privacidad. Las Duplex son más amplias, en dos niveles, perfectas para familias de hasta 5 personas más cuna.'
   }, {
     question: '¿Hay estacionamiento?',
     answer: 'Sí, cada cabaña tiene su espacio de estacionamiento privado dentro del complejo.'
@@ -193,25 +193,25 @@ function HomePage() {
     }]
   }, {
     name: 'duplex',
-    label: 'Cabañas Dúplex',
+    label: 'Cabañas Duplex',
     images: [{
-      src: 'images/Cabañas_Dúplex/dormitorio.png',
-      alt: 'Dormitorio cabaña dúplex'
+      src: 'images/Cabañas_Duplex/dormitorio.png',
+      alt: 'Dormitorio cabaña duplex'
     }, {
-      src: 'images/Cabañas_Dúplex/comedor2.png',
-      alt: 'Sala de estar cabaña dúplex'
+      src: 'images/Cabañas_Duplex/comedor2.png',
+      alt: 'Sala de estar cabaña duplex'
     }, {
-      src: 'images/Cabañas_Dúplex/cocina.png',
-      alt: 'Cocina cabaña dúplex'
+      src: 'images/Cabañas_Duplex/cocina.png',
+      alt: 'Cocina cabaña duplex'
     }, {
-      src: 'images/Cabañas_Dúplex/comedor.png',
+      src: 'images/Cabañas_Duplex/comedor.png',
       alt: 'Cabaña hasta para cinco personas'
     }, {
-      src: 'images/Cabañas_Dúplex/baño.png',
-      alt: 'Baño cabaña dúplex'
+      src: 'images/Cabañas_Duplex/baño.png',
+      alt: 'Baño cabaña duplex'
     }, {
-      src: 'images/Cabañas_Dúplex/exterior.png',
-      alt: 'Exterior cabaña dúplex'
+      src: 'images/Cabañas_Duplex/exterior.png',
+      alt: 'Exterior cabaña duplex'
     }]
   }, {
     name: 'pool',
@@ -556,7 +556,7 @@ function HomePage() {
             }} transition={{
               duration: 0.6
             }} className="order-2 lg:order-1">
-                <h2 className="mb-4 text-secondary">Cabañas Dúplex</h2>
+                <h2 className="mb-4 text-secondary">Cabañas Duplex</h2>
                 <p className="text-lg text-muted-foreground mb-4">
                   Capacidad: 2 a 5 personas + cuna
                 </p>
@@ -596,7 +596,7 @@ function HomePage() {
             }} transition={{
               duration: 0.6
             }} className="order-1 lg:order-2">
-                <img src="images/otras/duplex.webp" alt="Exterior de cabaña dúplex en dos niveles" loading="lazy" className="w-full h-96 object-cover rounded-2xl shadow-lg" />
+                <img src="images/otras/duplex.webp" alt="Exterior de cabaña duplex en dos niveles" loading="lazy" className="w-full h-96 object-cover rounded-2xl shadow-lg" />
               </motion.div>
             </div>
           </div>
@@ -678,7 +678,7 @@ function HomePage() {
                 <h2 className="mb-4">Diversión para los más chicos</h2>
                 <p className="text-lg text-muted-foreground leading-relaxed">
                   Nuestro parque infantil cuenta con cama elástica, tirolesa, arenero, hamacas, 
-                  cancha de fútbol y amplios espacios verdes para que los niños disfruten al aire libre 
+                  cancha de futbol y amplios espacios verdes para que los niños disfruten al aire libre 
                   en un entorno seguro y natural.
                 </p>
               </motion.div>
