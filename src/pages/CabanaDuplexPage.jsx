@@ -114,7 +114,7 @@ function CabanaDuplexPage() {
     "@type": "Accommodation",
     "name": "Cabaña Dúplex - Colinas Serranas",
     "description": "Cabaña dúplex en dos niveles, ideal para familias. Capacidad 2-5 personas más cuna, cocina equipada, desayuno incluido.",
-    "image": "images/Cabañas_Dúplex/dormitorio.png",
+    "image": "https://colinas-serranas.vercel.app/images/Cabañas_Dúplex/dormitorio.png",
     "occupancy": {
       "@type": "QuantitativeValue",
       "minValue": 2,

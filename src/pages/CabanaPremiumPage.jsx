@@ -110,7 +110,7 @@ function CabanaPremiumPage() {
     "@type": "Accommodation",
     "name": "Cabaña Premium - Colinas Serranas",
     "description": "Cabaña premium con jacuzzi doble privado, ideal para parejas. Capacidad 2-4 personas, cocina equipada, desayuno incluido.",
-    "image": "images/Cabañas_Premium/portada.png",
+    "image": "https://colinas-serranas.vercel.app/images/Cabañas_Premium/portada.png",
     "occupancy": {
       "@type": "QuantitativeValue",
       "minValue": 2,
@@ -135,7 +135,7 @@ function CabanaPremiumPage() {
         
         <meta property="og:title" content="Cabaña Premium con Jacuzzi en Tandil - Colinas Serranas" />
         <meta property="og:description" content="Cabaña premium con jacuzzi doble privado. Ideal para parejas. Desayuno incluido, máxima privacidad." />
-        <meta property="og:image" content="images/Cabañas_Premium/portada.png" />
+        <meta property="og:image" content="/images/Cabañas_Premium/portada.png" />
         <meta property="og:url" content="https://colinasserranas.com/cabana_premium_tandil" />
         
         <script type="application/ld+json">
@@ -150,7 +150,7 @@ function CabanaPremiumPage() {
         <section className="relative min-h-[70vh] flex items-center justify-center">
           <div className="absolute inset-0">
             <img
-              src="public/images/Cabañas_Premium/portada.png"
+              src="/images/Cabañas_Premium/portada.png"
               alt="Cabaña premium con jacuzzi en Tandil"
               className="w-full h-full object-cover"
             />
