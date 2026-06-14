@@ -173,141 +173,141 @@ function HomePage() {
     name: 'premium',
     label: 'Cabañas Premium',
     images: [{
-      src: 'images/Cabanas_Premium/hidro1.png',
+      src: '/images/Cabanas_Premium/hidro1.png',
       alt: 'Hidromasaje para dos personas'
     }, {
-      src: 'images/Cabanas_Premium/dormitorio.png',
+      src: '/images/Cabanas_Premium/dormitorio.png',
       alt: 'Dormitorio principal cabaña premium'
     }, {
-      src: 'images/Cabanas_Premium/cocina.png',
+      src: '/images/Cabanas_Premium/cocina.png',
       alt: 'Cocina equipada cabaña premium'
     }, {
-      src: 'images/Cabanas_Premium/comedor.png',
+      src: '/images/Cabanas_Premium/comedor.png',
       alt: 'Cabaña hasta para cuatro personas'
     }, {
-      src: 'images/Cabanas_Premium/baño.png',
+      src: '/images/Cabanas_Premium/baño.png',
       alt: 'Baño cabaña premium'
     }, {
-      src: 'images/Cabanas_Premium/exterior.png',
+      src: '/images/Cabanas_Premium/exterior.png',
       alt: 'Exterior cabaña premium'
     }]
   }, {
     name: 'duplex',
     label: 'Cabañas Duplex',
     images: [{
-      src: 'images/Cabanas_Duplex/dormitorio.png',
+      src: '/images/Cabanas_Duplex/dormitorio.png',
       alt: 'Dormitorio cabaña duplex'
     }, {
-      src: 'images/Cabanas_Duplex/comedor2.png',
+      src: '/images/Cabanas_Duplex/comedor2.png',
       alt: 'Sala de estar cabaña duplex'
     }, {
-      src: 'images/Cabanas_Duplex/cocina.png',
+      src: '/images/Cabanas_Duplex/cocina.png',
       alt: 'Cocina cabaña duplex'
     }, {
-      src: 'images/Cabanas_Duplex/comedor.png',
+      src: '/images/Cabanas_Duplex/comedor.png',
       alt: 'Cabaña hasta para cinco personas'
     }, {
-      src: 'images/Cabanas_Duplex/baño.png',
+      src: '/images/Cabanas_Duplex/baño.png',
       alt: 'Baño cabaña duplex'
     }, {
-      src: 'images/Cabanas_Duplex/exterior.png',
+      src: '/images/Cabanas_Duplex/exterior.png',
       alt: 'Exterior cabaña duplex'
     }]
   }, {
     name: 'pool',
     label: 'Piscina',
     images: [{
-      src: 'images/Piscina/Captura de pantalla de 2026-06-12 21-56-25.png',
+      src: '/images/Piscina/Captura de pantalla de 2026-06-12 21-56-25.png',
       alt: 'Piscina al aire libre rodeada de naturaleza'
     }, {
-      src: 'images/Piscina/Captura de pantalla de 2026-06-12 21-56-38.png',
+      src: '/images/Piscina/Captura de pantalla de 2026-06-12 21-56-38.png',
       alt: 'Área de piscina con reposeras'
     }, {
-      src: 'images/Piscina/Captura de pantalla de 2026-06-12 22-01-56.png',
+      src: '/images/Piscina/Captura de pantalla de 2026-06-12 22-01-56.png',
       alt: 'Área de piscina con reposeras'
     }, {
-      src: 'images/Piscina/Captura de pantalla de 2026-06-12 22-03-05.png',
+      src: '/images/Piscina/Captura de pantalla de 2026-06-12 22-03-05.png',
       alt: 'Área de piscina con reposeras'
     }]
   }, {
     name: 'park',
     label: 'Parque y juegos',
     images: [{
-      src: 'images/Parque y juegos/niños7.png',
+      src: '/images/Parque y juegos/niños7.png',
       alt: 'Parque infantil con juegos'
     }, {
-      src: 'images/Parque y juegos/niños6.png',
+      src: '/images/Parque y juegos/niños6.png',
       alt: 'Zona de juegos para niños'
     }, {
-      src: 'images/Parque y juegos/niños3.png',
+      src: '/images/Parque y juegos/niños3.png',
       alt: 'Zona de juegos para niños'
     }, {
-      src: 'images/Parque y juegos/niños4.png',
+      src: '/images/Parque y juegos/niños4.png',
       alt: 'Zona de juegos para niños'
     }, {
-      src: 'images/Parque y juegos/niños5.png',
+      src: '/images/Parque y juegos/niños5.png',
       alt: 'Zona de juegos para niños'
     }, {
-      src: 'images/Parque y juegos/niños1.png',
+      src: '/images/Parque y juegos/niños1.png',
       alt: 'Zona de juegos para niños'
     }, {
-      src: 'images/Parque y juegos/niños2.png',
+      src: '/images/Parque y juegos/niños2.png',
       alt: 'Zona de juegos para niños'
     }, {
-      src: 'images/Parque y juegos/niños8.png',
+      src: '/images/Parque y juegos/niños8.png',
       alt: 'Zona de juegos para niños'
     }]
   }, {
     name: 'nature',
     label: 'Entorno serrano',
     images: [{
-      src: 'images/Parque y juegos/entorno1.png',
+      src: '/images/Parque y juegos/entorno1.png',
       alt: 'Vista de las sierras de Tandil'
     },{
-      src: 'images/Parque y juegos/entorno2.png',
+      src: '/images/Parque y juegos/entorno2.png',
       alt: 'Vista de las sierras de Tandil'
     },{
-      src: 'images/Parque y juegos/entorno3.png',
+      src: '/images/Parque y juegos/entorno3.png',
       alt: 'Vista de las sierras de Tandil'
     },{
-      src: 'images/Parque y juegos/entorno4.png',
+      src: '/images/Parque y juegos/entorno4.png',
       alt: 'Vista de las sierras de Tandil'
     },{
-      src: 'images/Parque y juegos/entorno5.png',
+      src: '/images/Parque y juegos/entorno5.png',
       alt: 'Vista de las sierras de Tandil'
     },{
-      src: 'images/Parque y juegos/entorno6.png',
+      src: '/images/Parque y juegos/entorno6.png',
       alt: 'Vista de las sierras de Tandil'
     },{
-      src: 'images/Parque y juegos/entorno7.png',
+      src: '/images/Parque y juegos/entorno7.png',
       alt: 'Vista de las sierras de Tandil'
     },{
-      src: 'images/Parque y juegos/entorno8.png',
+      src: '/images/Parque y juegos/entorno8.png',
       alt: 'Vista de las sierras de Tandil'
     },{
-      src: 'images/Parque y juegos/entorno9.png',
+      src: '/images/Parque y juegos/entorno9.png',
       alt: 'Vista de las sierras de Tandil'
     },{
-      src: 'images/Parque y juegos/entorno10.png',
+      src: '/images/Parque y juegos/entorno10.png',
       alt: 'Vista de las sierras de Tandil'
     },{
-      src: 'images/Parque y juegos/entorno11.png',
+      src: '/images/Parque y juegos/entorno11.png',
       alt: 'Vista de las sierras de Tandil'
     },{
-      src: 'images/Parque y juegos/entorno12.png',
+      src: '/images/Parque y juegos/entorno12.png',
       alt: 'Vista de las sierras de Tandil'
     },]
   }, {
     name: 'pets',
     label: 'Mascotas',
     images: [{
-      src: 'images/Mascotas/Captura de pantalla de 2026-06-12 21-57-35.png',
+      src: '/images/Mascotas/Captura de pantalla de 2026-06-12 21-57-35.png',
       alt: 'Mascota disfrutando del entorno natural'
     }, {
-      src: 'images/Mascotas/Captura de pantalla de 2026-06-12 22-05-00.png',
+      src: '/images/Mascotas/Captura de pantalla de 2026-06-12 22-05-00.png',
       alt: 'Espacio pet friendly'
     },{
-      src: 'images/Mascotas/Captura de pantalla de 2026-06-13 18-10-55.png',
+      src: '/images/Mascotas/Captura de pantalla de 2026-06-13 18-10-55.png',
       alt: 'Espacio pet friendly'
     }]
   }];
