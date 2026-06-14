@@ -412,7 +412,7 @@ function CabanaPremiumPage() {
           </div>
         </section>
 
-        <section className="section-spacing bg-primary text-primary-foreground">
+        <section className="section-spacing bg-secondary text-primary-foreground">
           <div className="section-container text-center">
             <motion.div
               initial={{ opacity: 0, y: 20 }}

@@ -9,3 +9,6 @@
 9- en preguntas poner qeu solo se agrega cama en duplex ok
 10- Premium: cambiar foto, poner gaaleria de imagenes ok
 11- Duplex: cambiar fotos, galeria fotos, en pregunta agregar lo de la cama en el comedor ok
+12- cambiar color de listo para tu proxima escapada
+13- ver formulario de contacto que funcione ok
+14- poner icono en la url

@@ -89,27 +89,27 @@ function HomePage() {
     label: 'Mascotas bienvenidas'
   }];
   const attractions = [{
-    image: 'https://horizons-cdn.hostinger.com/90ce6bf4-f4fc-481d-b43f-8478ba6718cc/8567ff103dfcde01d6d5f1feeccfa595.jpg',
+    image: '/images/paseos/lago.webp',
     title: 'Lago del Fuerte',
     description: 'Espejo de agua ideal para paseos, deportes náuticos y picnics familiares.'
   }, {
-    image: 'images/paseos/picada.webp',
+    image: '/images/paseos/picada.webp',
     title: 'Gastronomía regional',
     description: 'Descubre los sabores locales: quesos, embutidos, dulces artesanales y más.'
   }, {
-    image: 'images/paseos/calvario.webp',
+    image: '/images/paseos/calvario.webp',
     title: 'Monte Calvario',
     description: 'Sendero con estaciones del vía crucis y vistas espectaculares de las sierras.'
   }, {
-    image: 'images/paseos/centinela.webp',
+    image: '/images/paseos/centinela.webp',
     title: 'Vista Panorámica',
     description: 'Impresionantes vistas aéreas de la ciudad, sus iglesias y lagos.'
   }, {
-    image: 'images/paseos/parque.webp',
+    image: '/images/paseos/parque.webp',
     title: 'Parque Independencia',
     description: 'Paseo donde visitar el Castillo morisco y disfrutar de las vistas'
   }, {
-    image: 'images/paseos/movediza.webp',
+    image: '/images/paseos/movediza.webp',
     title: 'Piedra Movediza',
     description: 'Descubre los sabores locales: quesos, embutidos, dulces artesanales y más.'
   }];
@@ -316,7 +316,7 @@ function HomePage() {
     "@graph": [{
       "@type": "LodgingBusiness",
       "name": "Colinas Serranas",
-      "image": "https://images.unsplash.com/photo-1698998786030-1487f00a945b",
+      "image": "/images/otras/portada.webp",
       "description": "Cabañas totalmente equipadas en las sierras de Tandil con desayuno incluido, jacuzzi, piscina y espacios verdes.",
       "address": {
         "@type": "PostalAddress",
@@ -325,7 +325,7 @@ function HomePage() {
         "addressCountry": "AR"
       },
       "telephone": "+5492494467441",
-      "email": "info@colinasserranas.com",
+      "email": "colinasserranas@gmail.com",
       "priceRange": "$$",
       "amenityFeature": [{
         "@type": "LocationFeatureSpecification",
@@ -361,7 +361,7 @@ function HomePage() {
         
         <meta property="og:title" content="Colinas Serranas - Cabañas en Tandil con Desayuno y Jacuzzi" />
         <meta property="og:description" content="Tu refugio en las sierras de Tandil. Cabañas totalmente equipadas con desayuno incluido, jacuzzi, piscina y espacios verdes." />
-        <meta property="og:image" content="https://images.unsplash.com/photo-1698998786030-1487f00a945b" />
+        <meta property="og:image" content="/images/otras/portada.webp" />
         <meta property="og:url" content="https://colinasserranas.com/" />
         <meta property="og:type" content="website" />
         
@@ -901,7 +901,7 @@ function HomePage() {
                       <Mail className="w-5 h-5 text-primary mt-1 flex-shrink-0" />
                       <div>
                         <p className="font-medium text-card-foreground">Email</p>
-                        <a href="mailto:info@colinasserranas.com" className="text-sm text-muted-foreground hover:text-primary">
+                        <a href="mailto:colinasserranas@gmail.com" className="text-sm text-muted-foreground hover:text-primary">
                           colinasserranas@gmail.com
                         </a>
                       </div>
@@ -936,7 +936,7 @@ function HomePage() {
           </div>
         </section>
 
-        <section className="section-spacing bg-primary text-primary-foreground">
+        <section className="section-spacing bg-secondary text-primary-foreground">
           <div className="section-container text-center">
             <motion.div initial={{
             opacity: 0,

@@ -24,44 +24,65 @@ function ContactForm() {
   };
 
   const handleSelectChange = (value) => {
-    setFormData(prev => ({ ...prev, cabinType: value }));
-  };
+  setFormData(prev => ({ ...prev, cabinType: value }));
+};
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+const handleSubmit = async (e) => {
+  e.preventDefault();
 
-    if (!formData.name || !formData.email || !formData.message) {
-      toast.error('Por favor completa todos los campos obligatorios');
-      return;
+  if (!formData.name || !formData.email || !formData.message) {
+    toast.error('Por favor completa todos los campos obligatorios');
+    return;
+  }
+
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+  if (!emailRegex.test(formData.email)) {
+    toast.error('Por favor ingresa un email válido');
+    return;
+  }
+
+
+  try {
+    const response = await fetch(
+      'https://formspree.io/f/mgobrrvp',
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+        },
+        body: JSON.stringify(formData),
+      }
+    );
+
+    if (!response.ok) {
+      throw new Error('Error al enviar');
     }
 
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(formData.email)) {
-      toast.error('Por favor ingresa un email válido');
-      return;
-    }
+    toast.success(
+      'Mensaje enviado correctamente. Te contactaremos pronto.'
+    );
 
-    setIsSubmitting(true);
+    setFormData({
+      name: '',
+      email: '',
+      phone: '',
+      cabinType: '',
+      message: '',
+    });
 
-    setTimeout(() => {
-      const submissions = JSON.parse(localStorage.getItem('contactSubmissions') || '[]');
-      submissions.push({
-        ...formData,
-        timestamp: new Date().toISOString(),
-      });
-      localStorage.setItem('contactSubmissions', JSON.stringify(submissions));
+  } catch (error) {
+    toast.error(
+      'No se pudo enviar el mensaje. Intenta nuevamente.'
+    );
+  } finally {
+    setIsSubmitting(false);
+  }
+};
+    
 
-      toast.success('Mensaje enviado correctamente. Te contactaremos pronto.');
-      setFormData({
-        name: '',
-        email: '',
-        phone: '',
-        cabinType: '',
-        message: '',
-      });
-      setIsSubmitting(false);
-    }, 1000);
-  };
+    
 
   return (
     <Card className="bg-card border-border">
