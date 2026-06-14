@@ -96,7 +96,7 @@ function CabanaDuplexPage() {
         alt: 'Exterior de cabaña'
       },
       {
-        src: '/images/Cabañas_Duplex/Captura de pantalla de 2024-09-06 19-47-42.png',
+        src: '/images/Cabañas_Duplex/dormitorio.png',
         alt: 'Exterior de cabaña'
       }
     ];
