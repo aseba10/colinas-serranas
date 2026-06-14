@@ -92,6 +92,7 @@ return (
                   <a
                     key={link.path}
                     href={link.path}
+                    onClick={handleContactClick}
                     className={className}
                   >
                     {link.label}
@@ -167,9 +168,70 @@ return (
               </a>
             </Button>
           </div>
-
+          {/* BOTÓN HAMBURGUESA */}
+                <button
+                  onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                  className={`md:hidden p-2 ${
+                    isScrolled
+                      ? 'text-foreground'
+                      : 'text-white'
+                  }`}
+                >
+                  {isMobileMenuOpen ? (
+                    <X className="w-6 h-6" />
+                  ) : (
+                    <Menu className="w-6 h-6" />
+                  )}
+                </button>
         </div>
       </div>
+      
+      <AnimatePresence>
+      {isMobileMenuOpen && (
+        <motion.div
+          initial={{ opacity: 0, height: 0 }}
+          animate={{ opacity: 1, height: 'auto' }}
+          exit={{ opacity: 0, height: 0 }}
+          transition={{ duration: 0.3 }}
+          className="md:hidden bg-background border-t border-border"
+        >
+          <nav className="section-container py-4 flex flex-col gap-4">
+
+            <Link
+              to="/"
+              onClick={() => {
+                setIsMobileMenuOpen(false);
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+              }}
+            >
+              Inicio
+            </Link>
+
+            <Link
+              to="/cabana_premium_tandil"
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              Cabañas Premium
+            </Link>
+
+            <Link
+              to="/cabana_duplex_tandil"
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              Cabañas Dúplex
+            </Link>
+
+            <a
+              href="/#contacto"
+              onClick={handleContactClick}
+            >
+              Contacto
+            </a>
+
+          </nav>
+        </motion.div>
+      )}
+    </AnimatePresence>
     </header>
   );
 }
