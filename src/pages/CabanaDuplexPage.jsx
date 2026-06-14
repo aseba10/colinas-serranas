@@ -114,7 +114,7 @@ function CabanaDuplexPage() {
     "@type": "Accommodation",
     "name": "Cabaña Duplex - Colinas Serranas",
     "description": "Cabaña duplex en dos niveles, ideal para familias. Capacidad 2-5 personas más cuna, cocina equipada, desayuno incluido.",
-    "image": "https://colinas-serranas.vercel.app/images/Cabañas_Premium/portada.png",
+    "image": "https://colinas-serranas.vercel.app/images/Cabañas_Duplex/dormitorio.png",
     "occupancy": {
       "@type": "QuantitativeValue",
       "minValue": 2,
@@ -139,7 +139,7 @@ function CabanaDuplexPage() {
         
         <meta property="og:title" content="Cabaña Duplex para Familias en Tandil - Colinas Serranas" />
         <meta property="og:description" content="Cabaña duplex en dos niveles. Ideal para familias. Desayuno incluido, espaciosa y cómoda." />
-        <meta property="og:image" content="images/Cabañas_Duplex/dormitorio2.png" />
+        <meta property="og:image" content="images/Cabañas_Duplex/dormitorio.png" />
         <meta property="og:url" content="https://colinasserranas.com/cabana_duplex_tandil" />
         
         <script type="application/ld+json">
@@ -154,7 +154,7 @@ function CabanaDuplexPage() {
         <section className="relative min-h-[70vh] flex items-center justify-center">
           <div className="absolute inset-0">
             <img
-              src="public/images/Cabañas_Duplex/dormitorio2.png"
+              src="public/images/Cabañas_Duplex/dormitorio.png"
               alt="Cabaña duplex para familias en Tandil"
               className="w-full h-full object-cover"
             />
