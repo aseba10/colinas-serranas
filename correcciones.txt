@@ -9,6 +9,69 @@
 9- en preguntas poner qeu solo se agrega cama en duplex ok
 10- Premium: cambiar foto, poner gaaleria de imagenes ok
 11- Duplex: cambiar fotos, galeria fotos, en pregunta agregar lo de la cama en el comedor ok
-12- cambiar color de listo para tu proxima escapada
+12- cambiar color de listo para tu proxima escapada ok
 13- ver formulario de contacto que funcione ok
-14- poner icono en la url
+14- poner icono en la url ok
+
+- poner ubicación
+- cambiar orden de las fotos en galeria ok
+- cambiar tipografia
+- cambiar color rojo a violeta ok
+- ver botones de menu en violeta ok
+- mail info@colinasserranas.com.ar
+- Cambiar "jacuzzi" por "hidromasaje"
+- cambiar "1 habitación" por "1 dormitorio" en "nuestras cabañas"
+- cambiar "habitación principal" por "dormitorio principal" en cabañas premium y cabañas duplex 
+- Cambiar "jacuzzi" por "hidromasaje" en "cabañas premium"
+- sacar opción de cama extra en cabañas premium
+- agregar de alguna manera que en el estar hay una cama con cama carro de una plaza en cabañas premium y cabañas duplex
+- poner que las cabañas duplex son hasta para cuatro personas con la opción de agregar una cama para una quinta
+- cambiar "jacuzzi doble" por hidromasaje en la comparación de cabañas
+- cambiar la descripción de la piedra movediza en atractivos de la ciudad
+- intentar poner reseñas reales en "lo que dicen nuestros huéspedes"
+- poner al menos horario mínimo en el que acercamos el desayuno en preguntas frecuentes
+- aclarar que el horno es pequeño con dos hornallas en preguntas frecuentes
+- Cambiar "jacuzzi doble" por "hidromasaje" preguntas frecuentes
+- cambiar que cada cabaña tiene estacionamiento privado en las preguntas frecuentes
+- cambiar "ano" por "no" en agregar cama de preguntas frecuentes
+- agregar que el aire está en el dormitorio en las preguntas frecuentes
+- linkear la ubicación a Google maps en la información de contacto
+- son redundantes los últimos botones de reservar ahora y consultar por WhatsApp antes de "listo para tu próxima escapada a Tandil?"
+- es redundante la información de contacto, el botón de consultar por WhatsApp y el horario de atención al final de la página
+
+Pagina cabañas premium:
+
+- cambiar primer botón "consultar disponibilidad" por "consultar por WhatsApp"
+- cambiar "jacuzzi" y por "hidromasaje" en todas las menciones dentro de la página
+- sacar que el baño es en suite
+- cambiar "habitación principal" por "dormitorio principal"
+- aclarar pequeño horno con dos hornallas en cocina completa
+- cambiar "habitaciones" por "dormitorios" en "detalles de la cabaña" 
+- cambiar la palabra habitación por dormitorio en todas las menciones
+- es redundante el apartado de reservas al final de la página
+
+Página cabañas duplex:
+
+- el botón de reservar ahora es verde en vez de naranja
+- cambiar primer botón "consultar disponibilidad" por "consultar por WhatsApp" 
+- cambiar la palabra habitación por dormitorio en todas las menciones 
+- sacar que se puede agregar una cama sin costo adicional
+- agregar que en el estar se encuentran las camas de una plaza para el tercer y cuarto pasajero, y que la cama extra puede agregarse en el dormitorio principal 
+- aclarar pequeño horno con dos hornallas en cocina completa
+- sacar "estacionamiento privado" en amenities 
+- aclarar que las camas de una plaza se encuentran en el estar dentro de preguntas frecuentes
+- reescribir la descripción de "cuántas personas pueden alojarse" dentro de preguntas frecuentes
+- reescribir la descripción de "hay espacio para cocinar?" Dentro de preguntas frecuentes
+- es redundante el apartado reservas al final de la página 
+
+Vista celular:
+
+- la página de contacto apunta a la página principal ok
+
+Vista web
+
+- es redundante el botón reservar ahora al margen superior derecho o el que está al principio de la página. Para mí quedaría mejor agregar un botón de consultar por WhatsApp a la barra inmóvil y sacar los dos que están en el cuerpo principal
+- lo mismo en las páginas de premium y duplex. Hay botones de reservar ahora y consultar por WhatsApp por todos lados, sólo los dejaría en la barra inmóvil
+
+arely.ns.cloudflare.com
+joaquin.ns.cloudflare.com

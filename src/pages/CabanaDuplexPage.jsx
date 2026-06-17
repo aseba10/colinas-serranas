@@ -54,11 +54,11 @@ function CabanaDuplexPage() {
   const faqs = [
     {
       question: '¿Cómo está distribuida la cabaña duplex?',
-      answer: 'La planta alta cuenta con la habitación principal con cama matrimonial. La planta baja tiene cocina completa, comedor, y baño con bañera. Es una distribución muy práctica para familias.',
+      answer: 'La planta alta cuenta con la habitación principal con cama matrimonial. La planta baja tiene cocina completa, comedor, y baño con bañera. En el comedor hay una cama de una plaza con otra que sale debajo para un tercer y cuarto pasajero. En caso de sumarse un quinto pasajero es posible agregar una cama adicional en la habitación. Es una distribución muy práctica para familias.',
     },
     {
       question: '¿Cuántas personas pueden alojarse?',
-      answer: 'La cabaña duplex tiene capacidad para 2 a 5 personas más cuna. Cuenta con una cama matrimonial en la habitación principal y podemos agregar camas extras o cuna sin cargo adicional.',
+      answer: 'La cabaña duplex tiene capacidad para 2 a 5 personas más cuna. Cuenta con una cama matrimonial en la habitación principal y podemos agregar cuna sin cargo adicional.',
     },
     {
       question: '¿Es segura para niños pequeños?',
@@ -66,7 +66,7 @@ function CabanaDuplexPage() {
     },
     {
       question: '¿Qué incluye el desayuno?',
-      answer: 'El desayuno incluye café, té, leche, jugos, tostadas, medialunas, mermeladas, manteca, queso, jamón y frutas de estación. Te lo llevamos directamente a tu cabaña en el horario que prefieras.',
+      answer: 'El desayuno incluye café, té, leche, jugos, tostadas, medialunas, mermeladas, manteca, queso, jamón y frutas de estación. Te lo llevamos directamente a tu cabaña a partir de las 8.15 hs.',
     },
     {
       question: '¿Hay espacio para cocinar?',

@@ -18,7 +18,7 @@ import {
 
 function CabanaPremiumPage() {
   const amenities = [
-    { icon: Droplets, label: 'Jacuzzi doble en suite' },
+    { icon: Droplets, label: 'Jacuzzi doble' },
     { icon: UtensilsCrossed, label: 'Cocina totalmente equipada' },
     { icon: Wifi, label: 'WiFi de alta velocidad' },
     { icon: Wind, label: 'Aire acondicionado frío/calor' },
@@ -54,15 +54,15 @@ function CabanaPremiumPage() {
   const faqs = [
     {
       question: '¿El jacuzzi es privado?',
-      answer: 'Sí, el jacuzzi doble está ubicado dentro de la cabaña, en el baño en suite de la habitación principal. Es completamente privado para tu uso exclusivo.',
+      answer: 'Sí, el jacuzzi doble está ubicado dentro de la cabaña. Es completamente privado para tu uso exclusivo.',
     },
     {
       question: '¿Cuántas personas pueden alojarse?',
-      answer: 'La cabaña premium tiene capacidad para 2 a 4 personas. Cuenta con una cama matrimonial en la habitación principal y podemos agregar una cuna sin cargo adicional (esta se pone en el comedor ya que en la habitación queda muy justa).',
+      answer: 'La cabaña premium tiene capacidad para 2 a 4 personas. Cuenta con una cama matrimonial en la habitación principal y en el comedor hay una cama con otra que sale debajo para un tercer y cuarto pasajero. Podemos agregar una cuna sin cargo adicional (esta se pone en el comedor ya que en la habitación queda muy justa).',
     },
     {
       question: '¿Qué incluye el desayuno?',
-      answer: 'El desayuno incluye café, té, leche, jugos, tostadas, medialunas, mermeladas, manteca, queso, jamón y frutas de estación. Te lo llevamos directamente a tu cabaña en el horario que prefieras.',
+      answer: 'El desayuno incluye café, té, leche, jugos, tostadas, medialunas, mermeladas, manteca y frutas de estación. Te lo llevamos directamente a tu cabaña a partir de las 8.15 hs.',
     },
     {
       question: '¿La cabaña tiene cocina?',
@@ -97,7 +97,7 @@ function CabanaPremiumPage() {
     }
   ];
   const highlights = [
-    'Jacuzzi doble privado en suite',
+    'Jacuzzi doble privado',
     'Máxima privacidad y tranquilidad',
     'Ideal para escapadas románticas',
     'Cocina totalmente equipada',
@@ -200,7 +200,7 @@ function CabanaPremiumPage() {
                 <p className="text-lg text-muted-foreground leading-relaxed mb-6">
                   Nuestras cabañas premium están diseñadas especialmente para parejas que buscan 
                   una escapada romántica con máxima privacidad y confort. El jacuzzi doble privado 
-                  en suite es el protagonista de estas cabañas, ideal para relajarse después de 
+                  es el protagonista de estas cabañas, ideal para relajarse después de 
                   un día explorando las sierras de Tandil.
                 </p>
                 <p className="text-lg text-muted-foreground leading-relaxed mb-6">

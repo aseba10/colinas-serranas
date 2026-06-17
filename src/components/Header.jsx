@@ -37,15 +37,17 @@ function Header() {
   
   const handleContactClick = (e) => {
     e.preventDefault();
+    setIsMobileMenuOpen(false);
     if (location.pathname !== '/') {
       navigate('/');
       setTimeout(() => {
         document.getElementById('contacto')?.scrollIntoView({ behavior: 'smooth' });
-      }, 100);
+      }, 300);
     } else {
-      document.getElementById('contacto')?.scrollIntoView({ behavior: 'smooth' });
+      setTimeout(() => {
+        document.getElementById('contacto')?.scrollIntoView({ behavior: 'smooth' });
+      }, 100);
     }
-    setIsMobileMenuOpen(false);
   };
 
 return (
@@ -79,9 +81,7 @@ return (
           <nav className="hidden md:flex items-center gap-8">
             {navLinks.map((link) => {
               const className = `text-sm font-medium transition-colors duration-200 relative ${
-                isActive(link.path)
-                  ? 'text-primary'
-                  : isScrolled
+                isScrolled
                   ? 'text-foreground hover:text-primary'
                   : 'text-white/90 hover:text-white'
               }`;

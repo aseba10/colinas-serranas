@@ -10,7 +10,7 @@ function ComparisonTable() {
     { feature: 'Espacio interior', premium: 'Compacto', duplex: 'Amplio' },
     { feature: 'Ideal para parejas', premium: true, duplex: true },
     { feature: 'Ideal para familias', premium: true, duplex: true },
-    { feature: 'Opción cama/cuna extra', premium: true, duplex: true },
+    { feature: 'Opción cuna extra', premium: true, duplex: true },
     { feature: 'Distribución', premium: '1 nivel', duplex: '2 niveles' },
   ];
 

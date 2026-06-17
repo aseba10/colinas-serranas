@@ -111,7 +111,7 @@ function HomePage() {
   }, {
     image: '/images/paseos/movediza.webp',
     title: 'Piedra Movediza',
-    description: 'Descubre los sabores locales: quesos, embutidos, dulces artesanales y más.'
+    description: 'Visitá uno de las atracciones más icónicas de Tandil.'
   }];
   const testimonials = [{
     name: 'María González',
@@ -149,7 +149,7 @@ function HomePage() {
     answer: 'Sí, somos un complejo pet friendly. Aceptamos mascotas de todos los tamaños. Solo te pedimos que nos avises al momento de la reserva y que mantengas a tu mascota bajo control en las áreas comunes.'
   }, {
     question: '¿El desayuno está incluido?',
-    answer: 'Sí, todas nuestras cabañas incluyen desayuno diario. Te lo llevamos directamente a tu cabaña en el horario que prefieras.'
+    answer: 'Sí, todas nuestras cabañas incluyen desayuno diario. Te lo llevamos directamente a tu cabaña a paartir de las 8.15 hs.'
   }, {
     question: '¿Las cabañas tienen cocina completa?',
     answer: 'Sí, todas nuestras cabañas cuentan con cocina totalmente equipada: heladera, microondas, horno, utensilios, vajilla y todo lo necesario para cocinar.'
@@ -161,15 +161,112 @@ function HomePage() {
     answer: 'Las Premium son ideales para parejas, tienen jacuzzi doble y máxima privacidad. Las Duplex son más amplias, en dos niveles, perfectas para familias de hasta 5 personas más cuna.'
   }, {
     question: '¿Hay estacionamiento?',
-    answer: 'Sí, cada cabaña tiene su espacio de estacionamiento privado dentro del complejo.'
+    answer: 'Las cabañas Premium cuentan con estacionamiento cubierto individual. Para el caso de las Duplex el auto puede dejarse junto a la cabaña (descubierto) o en una estructura de mediasombra común.'
   }, {
     question: '¿Se puede agregar cama o cuna extra?',
-    answer: 'Las cabañas Duplex son para cuatro personas pero es posible agregar una cama en la habitación para un quinto pasajero. En el caso de las Premium como cuenta con ambientes mas pequeños ano es posible agregar una plaza mas, y en caso de sumar una cuna debe hacerse en el comedor.'
+    answer: 'Las cabañas Duplex son para cuatro personas pero es posible agregar una cama en la habitación para un quinto pasajero. En el caso de las Premium como cuenta con ambientes mas pequeños no es posible agregar una plaza mas, y en caso de sumar una cuna debe hacerse en el comedor.'
   }, {
     question: '¿Tienen aire acondicionado?',
-    answer: 'Sí, todas las cabañas cuentan con aire acondicionado frío/calor para tu comodidad durante todo el año.'
+    answer: 'Sí, todas las cabañas cuentan con aire acondicionado frío/calor en la habitación para tu comodidad durante todo el año.'
   }];
   const galleryCategories = [{
+    name: 'park',
+    label: 'Parque y juegos',
+    images: [{
+      src: '/images/Parque y juegos/niños7.png',
+      alt: 'Parque infantil con juegos'
+    }, {
+      src: '/images/Parque y juegos/niños6.png',
+      alt: 'Zona de juegos para niños'
+    }, {
+      src: '/images/Parque y juegos/niños3.png',
+      alt: 'Zona de juegos para niños'
+    }, {
+      src: '/images/Parque y juegos/niños4.png',
+      alt: 'Zona de juegos para niños'
+    }, {
+      src: '/images/Parque y juegos/niños5.png',
+      alt: 'Zona de juegos para niños'
+    }, {
+      src: '/images/Parque y juegos/niños1.png',
+      alt: 'Zona de juegos para niños'
+    }, {
+      src: '/images/Parque y juegos/niños2.png',
+      alt: 'Zona de juegos para niños'
+    }, {
+      src: '/images/Parque y juegos/niños8.png',
+      alt: 'Zona de juegos para niños'
+    }]
+  },  {
+    name: 'nature',
+    label: 'Entorno serrano',
+    images: [{
+      src: '/images/Parque y juegos/entorno1.png',
+      alt: 'Vista de las sierras de Tandil'
+    },{
+      src: '/images/Parque y juegos/entorno2.png',
+      alt: 'Vista de las sierras de Tandil'
+    },{
+      src: '/images/Parque y juegos/entorno3.png',
+      alt: 'Vista de las sierras de Tandil'
+    },{
+      src: '/images/Parque y juegos/entorno4.png',
+      alt: 'Vista de las sierras de Tandil'
+    },{
+      src: '/images/Parque y juegos/entorno5.png',
+      alt: 'Vista de las sierras de Tandil'
+    },{
+      src: '/images/Parque y juegos/entorno6.png',
+      alt: 'Vista de las sierras de Tandil'
+    },{
+      src: '/images/Parque y juegos/entorno7.png',
+      alt: 'Vista de las sierras de Tandil'
+    },{
+      src: '/images/Parque y juegos/entorno8.png',
+      alt: 'Vista de las sierras de Tandil'
+    },{
+      src: '/images/Parque y juegos/entorno9.png',
+      alt: 'Vista de las sierras de Tandil'
+    },{
+      src: '/images/Parque y juegos/entorno10.png',
+      alt: 'Vista de las sierras de Tandil'
+    },{
+      src: '/images/Parque y juegos/entorno11.png',
+      alt: 'Vista de las sierras de Tandil'
+    },{
+      src: '/images/Parque y juegos/entorno12.png',
+      alt: 'Vista de las sierras de Tandil'
+    },]
+  }, {
+    name: 'pool',
+    label: 'Piscina',
+    images: [{
+      src: '/images/Piscina/Captura de pantalla de 2026-06-12 21-56-25.png',
+      alt: 'Piscina al aire libre rodeada de naturaleza'
+    }, {
+      src: '/images/Piscina/Captura de pantalla de 2026-06-12 21-56-38.png',
+      alt: 'Área de piscina con reposeras'
+    }, {
+      src: '/images/Piscina/Captura de pantalla de 2026-06-12 22-01-56.png',
+      alt: 'Área de piscina con reposeras'
+    }, {
+      src: '/images/Piscina/Captura de pantalla de 2026-06-12 22-03-05.png',
+      alt: 'Área de piscina con reposeras'
+    }]
+  }, {
+    name: 'pets',
+    label: 'Mascotas',
+    images: [{
+      src: '/images/Mascotas/Captura de pantalla de 2026-06-12 21-57-35.png',
+      alt: 'Mascota disfrutando del entorno natural'
+    }, {
+      src: '/images/Mascotas/Captura de pantalla de 2026-06-12 22-05-00.png',
+      alt: 'Espacio pet friendly'
+    },{
+      src: '/images/Mascotas/Captura de pantalla de 2026-06-13 18-10-55.png',
+      alt: 'Espacio pet friendly'
+    }]
+  },{
     name: 'premium',
     label: 'Cabañas Premium',
     images: [{
@@ -213,104 +310,7 @@ function HomePage() {
       src: '/images/Cabanas_Duplex/exterior.png',
       alt: 'Exterior cabaña duplex'
     }]
-  }, {
-    name: 'pool',
-    label: 'Piscina',
-    images: [{
-      src: '/images/Piscina/Captura de pantalla de 2026-06-12 21-56-25.png',
-      alt: 'Piscina al aire libre rodeada de naturaleza'
-    }, {
-      src: '/images/Piscina/Captura de pantalla de 2026-06-12 21-56-38.png',
-      alt: 'Área de piscina con reposeras'
-    }, {
-      src: '/images/Piscina/Captura de pantalla de 2026-06-12 22-01-56.png',
-      alt: 'Área de piscina con reposeras'
-    }, {
-      src: '/images/Piscina/Captura de pantalla de 2026-06-12 22-03-05.png',
-      alt: 'Área de piscina con reposeras'
-    }]
-  }, {
-    name: 'park',
-    label: 'Parque y juegos',
-    images: [{
-      src: '/images/Parque y juegos/niños7.png',
-      alt: 'Parque infantil con juegos'
-    }, {
-      src: '/images/Parque y juegos/niños6.png',
-      alt: 'Zona de juegos para niños'
-    }, {
-      src: '/images/Parque y juegos/niños3.png',
-      alt: 'Zona de juegos para niños'
-    }, {
-      src: '/images/Parque y juegos/niños4.png',
-      alt: 'Zona de juegos para niños'
-    }, {
-      src: '/images/Parque y juegos/niños5.png',
-      alt: 'Zona de juegos para niños'
-    }, {
-      src: '/images/Parque y juegos/niños1.png',
-      alt: 'Zona de juegos para niños'
-    }, {
-      src: '/images/Parque y juegos/niños2.png',
-      alt: 'Zona de juegos para niños'
-    }, {
-      src: '/images/Parque y juegos/niños8.png',
-      alt: 'Zona de juegos para niños'
-    }]
-  }, {
-    name: 'nature',
-    label: 'Entorno serrano',
-    images: [{
-      src: '/images/Parque y juegos/entorno1.png',
-      alt: 'Vista de las sierras de Tandil'
-    },{
-      src: '/images/Parque y juegos/entorno2.png',
-      alt: 'Vista de las sierras de Tandil'
-    },{
-      src: '/images/Parque y juegos/entorno3.png',
-      alt: 'Vista de las sierras de Tandil'
-    },{
-      src: '/images/Parque y juegos/entorno4.png',
-      alt: 'Vista de las sierras de Tandil'
-    },{
-      src: '/images/Parque y juegos/entorno5.png',
-      alt: 'Vista de las sierras de Tandil'
-    },{
-      src: '/images/Parque y juegos/entorno6.png',
-      alt: 'Vista de las sierras de Tandil'
-    },{
-      src: '/images/Parque y juegos/entorno7.png',
-      alt: 'Vista de las sierras de Tandil'
-    },{
-      src: '/images/Parque y juegos/entorno8.png',
-      alt: 'Vista de las sierras de Tandil'
-    },{
-      src: '/images/Parque y juegos/entorno9.png',
-      alt: 'Vista de las sierras de Tandil'
-    },{
-      src: '/images/Parque y juegos/entorno10.png',
-      alt: 'Vista de las sierras de Tandil'
-    },{
-      src: '/images/Parque y juegos/entorno11.png',
-      alt: 'Vista de las sierras de Tandil'
-    },{
-      src: '/images/Parque y juegos/entorno12.png',
-      alt: 'Vista de las sierras de Tandil'
-    },]
-  }, {
-    name: 'pets',
-    label: 'Mascotas',
-    images: [{
-      src: '/images/Mascotas/Captura de pantalla de 2026-06-12 21-57-35.png',
-      alt: 'Mascota disfrutando del entorno natural'
-    }, {
-      src: '/images/Mascotas/Captura de pantalla de 2026-06-12 22-05-00.png',
-      alt: 'Espacio pet friendly'
-    },{
-      src: '/images/Mascotas/Captura de pantalla de 2026-06-13 18-10-55.png',
-      alt: 'Espacio pet friendly'
-    }]
-  }];
+  },];
   const schemaMarkup = {
     "@context": "https://schema.org",
     "@graph": [{
@@ -326,6 +326,7 @@ function HomePage() {
       },
       "telephone": "+5492494467441",
       "email": "colinasserranas@gmail.com",
+      "logo": "/images/logo-colinas.png",
       "priceRange": "$$",
       "amenityFeature": [{
         "@type": "LocationFeatureSpecification",
@@ -343,6 +344,9 @@ function HomePage() {
         "@type": "LocationFeatureSpecification",
         "name": "Pet friendly"
       }],
+      "sameAs": [
+        "https://instagram.com/colinasserranas"
+      ],
       "aggregateRating": {
         "@type": "AggregateRating",
         "ratingValue": "4.8",
@@ -354,15 +358,15 @@ function HomePage() {
   };
   return <>
       <Helmet>
-        <title>Colinas Serranas - Cabañas en Tandil con Desayuno y Jacuzzi</title>
+        <title>Cabañas en Tandil | Colinas Serranas | Desayuno y Jacuzzi</title>
         <meta name="description" content="Cabañas totalmente equipadas en las sierras de Tandil. Desayuno incluido, jacuzzi, piscina, pet friendly. Escapada perfecta para parejas y familias." />
         <meta name="keywords" content="cabañas tandil, alojamiento tandil, cabañas con jacuzzi, escapada romántica tandil, cabañas pet friendly, vacaciones en tandil" />
-        <link rel="canonical" href="https://colinasserranas.com/" />
+        <link rel="canonical" href="https://colinasserranas.com.ar/" />
         
         <meta property="og:title" content="Colinas Serranas - Cabañas en Tandil con Desayuno y Jacuzzi" />
         <meta property="og:description" content="Tu refugio en las sierras de Tandil. Cabañas totalmente equipadas con desayuno incluido, jacuzzi, piscina y espacios verdes." />
         <meta property="og:image" content="/images/otras/portada.webp" />
-        <meta property="og:url" content="https://colinasserranas.com/" />
+        <meta property="og:url" content="https://colinasserranas.com.ar/" />
         <meta property="og:type" content="website" />
         
         <script type="application/ld+json">
@@ -881,13 +885,13 @@ function HomePage() {
                 <div className="bg-card rounded-2xl p-6 border border-border">
                   <h3 className="font-semibold mb-4 text-card-foreground">Información de contacto</h3>
                   <div className="space-y-4">
-                    <div className="flex items-start gap-3">
+                    <a href="https://www.google.com/maps/place/colinas+serranas/data=!4m2!3m1!1s0x9590e053c5fd3573:0x85d846cce0dcc740?sa=X&ved=1t:242&ictx=111" target="_blank" rel="noopener noreferrer" className="flex items-start gap-3 hover:opacity-80 transition-opacity">
                       <MapPin className="w-5 h-5 text-primary mt-1 flex-shrink-0" />
                       <div>
                         <p className="font-medium text-card-foreground">Ubicación</p>
                         <p className="text-sm text-muted-foreground">Tandil, Buenos Aires, Argentina</p>
                       </div>
-                    </div>
+                    </a>
                     <div className="flex items-start gap-3">
                       <Phone className="w-5 h-5 text-primary mt-1 flex-shrink-0" />
                       <div>
