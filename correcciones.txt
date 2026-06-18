@@ -13,7 +13,8 @@
 13- ver formulario de contacto que funcione ok
 14- poner icono en la url ok
 
-- poner ubicación
+- GA4
+- poner ubicación ok
 - cambiar orden de las fotos en galeria ok
 - cambiar tipografia
 - cambiar color rojo a violeta ok
