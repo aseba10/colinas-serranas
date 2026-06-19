@@ -50,13 +50,6 @@ function HomePage() {
   }, {
     icon: Leaf,
     label: 'Espacios verdes'
-  }];
-  const services = [{
-    icon: Coffee,
-    label: 'Desayuno'
-  }, {
-    icon: Sparkles,
-    label: 'Limpieza diaria'
   }, {
     icon: Wifi,
     label: 'WiFi'
@@ -67,26 +60,11 @@ function HomePage() {
     icon: Tv,
     label: 'Smart TV'
   }, {
-    icon: UtensilsCrossed,
-    label: 'Cocina equipada'
-  }, {
     icon: Bed,
     label: 'Ropa blanca'
   }, {
-    icon: ParkingCircle,
-    label: 'Estacionamiento'
-  }, {
-    icon: Waves,
-    label: 'Piscina'
-  }, {
     icon: Flame,
     label: 'Parrillas'
-  }, {
-    icon: Users,
-    label: 'Servicio personalizado'
-  }, {
-    icon: PawPrint,
-    label: 'Mascotas bienvenidas'
   }];
   const attractions = [{
     image: '/images/paseos/lago.webp',
@@ -416,30 +394,6 @@ function HomePage() {
           </div>
         </section>
 
-        <section className="section-spacing bg-muted/30">
-          <div className="section-container">
-            <motion.div initial={{
-            opacity: 0,
-            y: 20
-          }} whileInView={{
-            opacity: 1,
-            y: 0
-          }} viewport={{
-            once: true
-          }} transition={{
-            duration: 0.5
-          }} className="text-center mb-12">
-              <h2 className="mb-4">¿Por qué elegir Colinas Serranas?</h2>
-              <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                Combinamos tranquilidad, confort y servicios de calidad para tu estadía perfecta
-              </p>
-            </motion.div>
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
-              {features.map((feature, index) => <FeatureIcon key={index} icon={feature.icon} label={feature.label} />)}
-            </div>
-          </div>
-        </section>
-
         <section className="section-spacing bg-background">
           <div className="section-container">
             <motion.div initial={{
@@ -461,6 +415,30 @@ function HomePage() {
                 comodidades modernas. Cada detalle está pensado para que tu estadía sea inolvidable.
               </p>
             </motion.div>
+          </div>
+        </section>
+
+        <section className="section-spacing bg-muted/30">
+          <div className="section-container">
+            <motion.div initial={{
+            opacity: 0,
+            y: 20
+          }} whileInView={{
+            opacity: 1,
+            y: 0
+          }} viewport={{
+            once: true
+          }} transition={{
+            duration: 0.5
+          }} className="text-center mb-12">
+              <h2 className="mb-4">¿Por qué elegir Colinas Serranas?</h2>
+              <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+                Combinamos tranquilidad, confort y servicios de calidad para tu estadía perfecta
+              </p>
+            </motion.div>
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+              {features.map((feature, index) => <FeatureIcon key={index} icon={feature.icon} label={feature.label} />)}
+            </div>
           </div>
         </section>
 
@@ -628,30 +606,6 @@ function HomePage() {
           </div>
         </section>
 
-        <section className="section-spacing bg-background">
-          <div className="section-container">
-            <motion.div initial={{
-            opacity: 0,
-            y: 20
-          }} whileInView={{
-            opacity: 1,
-            y: 0
-          }} viewport={{
-            once: true
-          }} transition={{
-            duration: 0.5
-          }} className="text-center mb-12">
-              <h2 className="mb-4">Servicios incluidos</h2>
-              <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                Todo lo que necesitas para una estadía perfecta
-              </p>
-            </motion.div>
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-              {services.map((service, index) => <FeatureIcon key={index} icon={service.icon} label={service.label} />)}
-            </div>
-          </div>
-        </section>
-
         <section className="section-spacing bg-muted/30">
           <div className="section-container">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-16">
@@ -756,6 +710,28 @@ function HomePage() {
           </div>
         </section>
 
+        <section className="section-spacing bg-muted/30">
+          <div className="section-container">
+            <motion.div initial={{
+            opacity: 0,
+            y: 20
+          }} whileInView={{
+            opacity: 1,
+            y: 0
+          }} viewport={{
+            once: true
+          }} transition={{
+            duration: 0.5
+          }} className="text-center mb-12">
+              <h2 className="mb-4">Galería de fotos</h2>
+              <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+                Conoce nuestras instalaciones y entorno
+              </p>
+            </motion.div>
+            <GalleryGrid categories={galleryCategories} />
+          </div>
+        </section>
+
         <section className="section-spacing bg-background">
           <div className="section-container">
             <motion.div initial={{
@@ -793,12 +769,23 @@ function HomePage() {
           }} transition={{
             duration: 0.5
           }} className="text-center mb-12">
-              <h2 className="mb-4">Galería de fotos</h2>
+              <h2 className="mb-4">Preguntas frecuentes</h2>
               <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                Conoce nuestras instalaciones y entorno
+                Resolvemos tus dudas sobre tu estadía
               </p>
             </motion.div>
-            <GalleryGrid categories={galleryCategories} />
+            <div className="max-w-3xl mx-auto">
+              <Accordion type="single" collapsible className="space-y-4">
+                {faqs.map((faq, index) => <AccordionItem key={index} value={`item-${index}`} className="bg-card border border-border rounded-xl px-6">
+                    <AccordionTrigger className="text-left font-semibold text-card-foreground hover:text-primary">
+                      {faq.question}
+                    </AccordionTrigger>
+                    <AccordionContent className="text-muted-foreground leading-relaxed">
+                      {faq.answer}
+                    </AccordionContent>
+                  </AccordionItem>)}
+              </Accordion>
+            </div>
           </div>
         </section>
 
@@ -822,39 +809,6 @@ function HomePage() {
             </motion.div>
             <div className="columns-1 md:columns-2 lg:columns-3 gap-6">
               {testimonials.map((testimonial, index) => <TestimonialCard key={index} name={testimonial.name} rating={testimonial.rating} text={testimonial.text} date={testimonial.date} />)}
-            </div>
-          </div>
-        </section>
-
-        <section className="section-spacing bg-muted/30">
-          <div className="section-container">
-            <motion.div initial={{
-            opacity: 0,
-            y: 20
-          }} whileInView={{
-            opacity: 1,
-            y: 0
-          }} viewport={{
-            once: true
-          }} transition={{
-            duration: 0.5
-          }} className="text-center mb-12">
-              <h2 className="mb-4">Preguntas frecuentes</h2>
-              <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                Resolvemos tus dudas sobre tu estadía
-              </p>
-            </motion.div>
-            <div className="max-w-3xl mx-auto">
-              <Accordion type="single" collapsible className="space-y-4">
-                {faqs.map((faq, index) => <AccordionItem key={index} value={`item-${index}`} className="bg-card border border-border rounded-xl px-6">
-                    <AccordionTrigger className="text-left font-semibold text-card-foreground hover:text-primary">
-                      {faq.question}
-                    </AccordionTrigger>
-                    <AccordionContent className="text-muted-foreground leading-relaxed">
-                      {faq.answer}
-                    </AccordionContent>
-                  </AccordionItem>)}
-              </Accordion>
             </div>
           </div>
         </section>
