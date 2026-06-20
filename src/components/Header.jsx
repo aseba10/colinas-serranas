@@ -26,6 +26,8 @@ function Header() {
     { path: '/', label: 'Inicio' },
     { path: '/cabana_premium_tandil', label: 'Cabañas Premium' },
     { path: '/cabana_duplex_tandil', label: 'Cabañas Dúplex' },
+    { path: '/#galeria', label: 'Galería' },
+    { path: '/#faq', label: 'FAQ' },
     { path: '/#contacto', label: 'Contacto' },
   ];
 
@@ -46,6 +48,21 @@ function Header() {
     } else {
       setTimeout(() => {
         document.getElementById('contacto')?.scrollIntoView({ behavior: 'smooth' });
+      }, 100);
+    }
+  };
+
+  const handleAnchorClick = (e, sectionId) => {
+    e.preventDefault();
+    setIsMobileMenuOpen(false);
+    if (location.pathname !== '/') {
+      navigate('/');
+      setTimeout(() => {
+        document.getElementById(sectionId)?.scrollIntoView({ behavior: 'smooth' });
+      }, 300);
+    } else {
+      setTimeout(() => {
+        document.getElementById(sectionId)?.scrollIntoView({ behavior: 'smooth' });
       }, 100);
     }
   };
@@ -86,13 +103,14 @@ return (
                   : 'text-white/90 hover:text-white'
               }`;
 
-              // CONTACTO (anchor)
+              // ANCHOR LINKS (with #)
               if (link.path.includes('#')) {
+                const sectionId = link.path.split('#')[1];
                 return (
                   <a
                     key={link.path}
                     href={link.path}
-                    onClick={handleContactClick}
+                    onClick={(e) => handleAnchorClick(e, sectionId)}
                     className={className}
                   >
                     {link.label}
@@ -222,8 +240,22 @@ return (
             </Link>
 
             <a
+              href="/#galeria"
+              onClick={(e) => handleAnchorClick(e, 'galeria')}
+            >
+              Galería
+            </a>
+
+            <a
+              href="/#faq"
+              onClick={(e) => handleAnchorClick(e, 'faq')}
+            >
+              FAQ
+            </a>
+
+            <a
               href="/#contacto"
-              onClick={handleContactClick}
+              onClick={(e) => handleAnchorClick(e, 'contacto')}
             >
               Contacto
             </a>

@@ -16,7 +16,9 @@
 - incluir opciones en menu
 - cambiar tipografia
 - intentar poner reseñas reales en "lo que dicen nuestros huéspedes"
-- mail info@colinasserranas.com.ar
+- ads google
+- mail info@colinasserranas.com.ar 
+
 
 - Cambiar "jacuzzi" por "hidromasaje"
 - cambiar "1 habitación" por "1 dormitorio" en "nuestras cabañas"

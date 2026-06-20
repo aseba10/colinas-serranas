@@ -710,7 +710,7 @@ function HomePage() {
           </div>
         </section>
 
-        <section className="section-spacing bg-muted/30">
+        <section id="galeria" className="section-spacing bg-muted/30">
           <div className="section-container">
             <motion.div initial={{
             opacity: 0,
@@ -756,7 +756,7 @@ function HomePage() {
           </div>
         </section>
 
-        <section className="section-spacing bg-muted/30">
+        <section id="faq" className="section-spacing bg-muted/30">
           <div className="section-container">
             <motion.div initial={{
             opacity: 0,
@@ -860,7 +860,7 @@ function HomePage() {
                       <div>
                         <p className="font-medium text-card-foreground">Email</p>
                         <a href="mailto:colinasserranas@gmail.com" className="text-sm text-muted-foreground hover:text-primary">
-                          colinasserranas@gmail.com
+                          info@colinasserranas.com.ar
                         </a>
                       </div>
                     </div>
