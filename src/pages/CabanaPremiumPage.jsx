@@ -11,6 +11,7 @@ import TestimonialCard from '@/components/TestimonialCard.jsx';
 import GalleryGrid from '@/components/GalleryGrid.jsx';
 import ComparisonTable from '@/components/ComparisonTable.jsx';
 import WhatsAppButton from '@/components/WhatsAppButton.jsx';
+import ReservationButton from '@/components/ReservationButton.jsx';
 import {
   Droplets, UtensilsCrossed, Wifi, Wind, Tv, Bed, Coffee,
   Sparkles, ParkingCircle, Users, Heart, Check
@@ -168,15 +169,7 @@ function CabanaPremiumPage() {
                 Escapada romántica con jacuzzi doble privado
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button
-                  asChild
-                  size="lg"
-                  className="bg-primary text-primary-foreground hover:bg-primary/90 active:scale-[0.98] transition-all duration-200 text-lg px-8"
-                >
-                  <a href="https://wubook.net/nneb/bk?f=today&n=1&ep=45e55843&board=bb&o=1.0.0.0" target="_blank" rel="noopener noreferrer">
-                    Reservar ahora
-                  </a>
-                </Button>
+                <ReservationButton size="lg" className="text-lg px-8" text="Reservar ahora" />
                 <WhatsAppButton
                   text="Consultar disponibilidad"
                   className="text-lg px-8"
@@ -256,15 +249,7 @@ function CabanaPremiumPage() {
                     </div>
                   </div>
                   <div className="space-y-3">
-                    <Button
-                      asChild
-                      size="lg"
-                      className="w-full bg-primary text-primary-foreground hover:bg-primary/90 active:scale-[0.98] transition-all duration-200"
-                    >
-                      <a href="https://wubook.net/nneb/bk?f=today&n=1&ep=45e55843&board=bb&o=1.0.0.0" target="_blank" rel="noopener noreferrer">
-                        Reservar ahora
-                      </a>
-                    </Button>
+                    <ReservationButton size="lg" className="w-full" text="Reservar ahora" />
                     <WhatsAppButton
                       text="Consultar por WhatsApp"
                       className="w-full"
@@ -426,16 +411,7 @@ function CabanaPremiumPage() {
                 Vive una experiencia romántica única con jacuzzi privado en las sierras de Tandil
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button
-                  asChild
-                  size="lg"
-                  variant="secondary"
-                  className="bg-background text-foreground hover:bg-background/90 active:scale-[0.98] transition-all duration-200 text-lg px-8"
-                >
-                  <a href="https://wubook.net/nneb/bk?f=today&n=1&ep=45e55843&board=bb&o=1.0.0.0" target="_blank" rel="noopener noreferrer">
-                    Reservar ahora
-                  </a>
-                </Button>
+                <ReservationButton size="lg" className="text-lg px-8" text="Reservar ahora" />
                 <Button
                   asChild
                   size="lg"

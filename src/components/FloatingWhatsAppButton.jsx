@@ -8,6 +8,17 @@ function FloatingWhatsAppButton() {
   const message = encodeURIComponent('Hola, me interesa reservar una cabaña en Colinas Serranas. ¿Podrían brindarme más información?');
   const whatsappUrl = `https://wa.me/${phoneNumber}?text=${message}`;
 
+  const handleWhatsAppClick = () => {
+    // Registrar conversión en Google Ads
+    if (window.gtag) {
+      window.gtag('event', 'conversion', {
+        'value': 1.0,
+        'currency': 'ARS',
+        'transaction_id': Date.now()
+      });
+    }
+  };
+
   return (
     <motion.div
       initial={{ opacity: 0, scale: 0.8 }}
@@ -25,6 +36,7 @@ function FloatingWhatsAppButton() {
           target="_blank"
           rel="noopener noreferrer"
           aria-label="Contactar por WhatsApp"
+          onClick={handleWhatsAppClick}
         >
           <MessageCircle className="w-6 h-6" />
         </a>

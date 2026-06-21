@@ -13,11 +13,9 @@
 13- ver formulario de contacto que funcione ok
 14- poner icono en la url ok
 
-- incluir opciones en menu
 - cambiar tipografia
 - intentar poner reseñas reales en "lo que dicen nuestros huéspedes"
 - ads google
-- mail info@colinasserranas.com.ar 
 
 
 - Cambiar "jacuzzi" por "hidromasaje"
@@ -58,7 +56,8 @@ Vista web
 
 
 
-
+- mail info@colinasserranas.com.ar ok
+- incluir opciones en menu ok
 - unificar servicios con iconos ok
 - reagrupar secciones ok
 - GA4 ok

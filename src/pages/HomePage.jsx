@@ -16,6 +16,7 @@ import ComparisonTable from '@/components/ComparisonTable.jsx';
 import GalleryGrid from '@/components/GalleryGrid.jsx';
 import ContactForm from '@/components/ContactForm.jsx';
 import WhatsAppButton from '@/components/WhatsAppButton.jsx';
+import ReservationButton from '@/components/ReservationButton.jsx';
 
 // Explicitly importing all requested lucide-react icons to prevent 'is not defined' errors
 import { Coffee, Waves, Droplets, TreePine, PawPrint, UtensilsCrossed, Sparkles, Users, Award, Leaf, Wifi, Wind, Tv, Bed, ParkingCircle, Flame, Baby, Home, Heart, Mountain, MapPin, Phone, Mail, Instagram, Star, Utensils, Shirt, Car, Map as MapIcon, ChevronDown, Menu, X, ChevronRight, ChevronLeft, ExternalLink, Send } from 'lucide-react';
@@ -377,11 +378,7 @@ function HomePage() {
                 Cabañas totalmente equipadas con desayuno incluido, jacuzzi, piscina y espacios verdes
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button asChild size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90 active:scale-[0.98] transition-all duration-200 text-lg px-8">
-                  <a href="https://wubook.net/nneb/bk?f=today&n=1&ep=45e55843&board=bb&o=1.0.0.0" target="_blank" rel="noopener noreferrer">
-                    Reservar ahora
-                  </a>
-                </Button>
+                <ReservationButton size="lg" className="text-lg px-8" text="Reservar ahora" />
                 <WhatsAppButton text="Consultar por WhatsApp" className="text-lg px-8" />
               </div>
             </motion.div>
@@ -882,11 +879,7 @@ function HomePage() {
                   </p>
                 </div>
                 <div className="space-y-3">
-                  <Button asChild size="lg" className="w-full bg-primary text-primary-foreground hover:bg-primary/90 active:scale-[0.98] transition-all duration-200">
-                    <a href="https://wubook.net/nneb/bk?f=today&n=1&ep=45e55843&board=bb&o=1.0.0.0" target="_blank" rel="noopener noreferrer">
-                      Reservar ahora
-                    </a>
-                  </Button>
+                  <ReservationButton size="lg" className="w-full" text="Reservar ahora" />
                   <WhatsAppButton text="Consultar por WhatsApp" className="w-full" />
                 </div>
               </div>
@@ -917,11 +910,7 @@ function HomePage() {
                 Reserva tu cabaña hoy y descubre la tranquilidad de las sierras con todas las comodidades
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button asChild size="lg" variant="secondary" className="bg-background text-foreground hover:bg-background/90 active:scale-[0.98] transition-all duration-200 text-lg px-8">
-                  <a href="https://wubook.net/nneb/bk?f=today&n=1&ep=45e55843&board=bb&o=1.0.0.0" target="_blank" rel="noopener noreferrer">
-                    Reservar ahora
-                  </a>
-                </Button>
+                <ReservationButton size="lg" className="bg-background text-foreground hover:bg-background/90 text-lg px-8" text="Reservar ahora" />
                 <Button asChild size="lg" variant="outline" className="bg-transparent text-primary-foreground border-primary-foreground hover:bg-primary-foreground/10 active:scale-[0.98] transition-all duration-200 text-lg px-8">
                   <a href={`https://wa.me/5492494467441?text=${encodeURIComponent('Hola, me interesa reservar una cabaña en Colinas Serranas.')}`} target="_blank" rel="noopener noreferrer">
                     Consultar por WhatsApp
