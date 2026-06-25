@@ -1,21 +1,6 @@
-1- logo colinas header ok
-2- inicio o Colinas tienen que ir arriba del en el home ok
-3- Reservar ahora poner bien el link ok
-4- whatsapp poner bien el numero ok
-5- ver opiniones poner bien el link ok
-6- Corregir 2 habitaciones ok
-7- Descubre Tandil, corregir paseos ok
-8- galeria de fotos ok
-9- en preguntas poner qeu solo se agrega cama en duplex ok
-10- Premium: cambiar foto, poner gaaleria de imagenes ok
-11- Duplex: cambiar fotos, galeria fotos, en pregunta agregar lo de la cama en el comedor ok
-12- cambiar color de listo para tu proxima escapada ok
-13- ver formulario de contacto que funcione ok
-14- poner icono en la url ok
+
 
 - cambiar tipografia
-- intentar poner reseñas reales en "lo que dicen nuestros huéspedes"
-- ads google
 
 
 - Cambiar "jacuzzi" por "hidromasaje"
@@ -56,6 +41,22 @@ Vista web
 
 
 
+1- logo colinas header ok
+2- inicio o Colinas tienen que ir arriba del en el home ok
+3- Reservar ahora poner bien el link ok
+4- whatsapp poner bien el numero ok
+5- ver opiniones poner bien el link ok
+6- Corregir 2 habitaciones ok
+7- Descubre Tandil, corregir paseos ok
+8- galeria de fotos ok
+9- en preguntas poner qeu solo se agrega cama en duplex ok
+10- Premium: cambiar foto, poner gaaleria de imagenes ok
+11- Duplex: cambiar fotos, galeria fotos, en pregunta agregar lo de la cama en el comedor ok
+12- cambiar color de listo para tu proxima escapada ok
+13- ver formulario de contacto que funcione ok
+14- poner icono en la url ok
+- intentar poner reseñas reales en "lo que dicen nuestros huéspedes" ok
+- ads google ok
 - mail info@colinasserranas.com.ar ok
 - incluir opciones en menu ok
 - unificar servicios con iconos ok
