@@ -1,8 +1,9 @@
 import React from 'react';
 import { Button } from '@/components/ui/button';
+import { appendAttributionParams } from '@/lib/attribution';
 
 function ReservationButton({ text = 'Reservar ahora', className = '', size = 'default' }) {
-  const reservationUrl = 'https://wubook.net/nneb/bk?f=today&n=1&ep=45e55843&board=bb&o=1.0.0.0';
+  const baseReservationUrl = 'https://wubook.net/nneb/bk?f=today&n=1&ep=45e55843&board=bb&o=1.0.0.0';
 
   const handleReservationClick = () => {
     // Registrar conversión en Google Ads
@@ -14,6 +15,11 @@ function ReservationButton({ text = 'Reservar ahora', className = '', size = 'de
       });
     }
   };
+
+  // Se agregan los parámetros de campaña (gclid, fbclid, UTMs) guardados al
+  // entrar al sitio, para que el motor de reservas los reciba aunque el
+  // usuario haya navegado por varias páginas antes de llegar acá.
+  const reservationUrl = appendAttributionParams(baseReservationUrl);
 
   return (
     <Button
