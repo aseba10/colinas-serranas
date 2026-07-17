@@ -3,12 +3,16 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Menu, X, Hand } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { appendAttributionParams } from '@/lib/attribution';
 
 function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
+
+  const baseReservationUrl = 'https://wubook.net/nneb/bk?f=today&n=1&ep=45e55843&board=bb&o=1.0.0.0';
+  const reservationUrl = appendAttributionParams(baseReservationUrl);
 
   const scrollToTop = () => {
       window.scrollTo({ top: 0, behavior: "smooth" });
@@ -178,7 +182,7 @@ return (
               className="bg-primary text-primary-foreground hover:bg-primary/90"
             >
               <a
-                href="https://wubook.net/nneb/bk?f=today&n=1&ep=45e55843&board=bb&o=1.0.0.0"
+                href={reservationUrl}
                 target="_blank"
                 rel="noopener noreferrer"
               >
