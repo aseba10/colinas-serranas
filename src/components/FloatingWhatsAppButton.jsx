@@ -1,11 +1,36 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { MessageCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { motion } from 'framer-motion';
+import { getOrCreateVisitorId } from '@/lib/attribution';
 
 function FloatingWhatsAppButton() {
   const phoneNumber = '5492494467441';
-  const message = encodeURIComponent('Hola, me interesa reservar una cabaña en Colinas Serranas. ¿Podrían brindarme más información?');
+  const baseMessage = 'Hola, me interesa reservar una cabaña en Colinas Serranas. ¿Podrían brindarme más información?';
+
+  const [refCode, setRefCode] = useState(null);
+
+  useEffect(() => {
+    const visitorId = getOrCreateVisitorId();
+
+    fetch('/api/whatsapp-click', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ visitor_id: visitorId }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data && data.ref_code) {
+          setRefCode(data.ref_code);
+        }
+      })
+      .catch((err) => {
+        console.warn('No se pudo generar el ref_code de WhatsApp:', err);
+      });
+  }, []);
+
+  const finalMessage = refCode ? `${baseMessage} (ref: ${refCode})` : baseMessage;
+  const message = encodeURIComponent(finalMessage);
   const whatsappUrl = `https://wa.me/${phoneNumber}?text=${message}`;
 
   const handleWhatsAppClick = () => {
