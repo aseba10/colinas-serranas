@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>Panel interno - Colinas Serranas</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      max-width: 480px;
+      margin: 40px auto;
+      padding: 20px;
+      background: #f5f5f4;
+      color: #292524;
+    }
+    h1 {
+      font-size: 20px;
+      margin-bottom: 4px;
+    }
+    p.subtitle {
+      color: #78716c;
+      font-size: 14px;
+      margin-top: 0;
+      margin-bottom: 24px;
+    }
+    .card {
+      background: white;
+      border-radius: 12px;
+      padding: 24px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+    label {
+      display: block;
+      font-size: 14px;
+      font-weight: 600;
+      margin-top: 16px;
+      margin-bottom: 4px;
+    }
+    label.optional::after {
+      content: ' (opcional)';
+      font-weight: 400;
+      color: #a8a29e;
+    }
+    input {
+      width: 100%;
+      padding: 10px 12px;
+      border: 1px solid #d6d3d1;
+      border-radius: 8px;
+      font-size: 16px;
+    }
+    input:focus {
+      outline: none;
+      border-color: #78716c;
+    }
+    button {
+      width: 100%;
+      margin-top: 24px;
+      padding: 12px;
+      background: #57534e;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    button:disabled {
+      background: #d6d3d1;
+      cursor: not-allowed;
+    }
+    .msg {
+      margin-top: 16px;
+      padding: 12px;
+      border-radius: 8px;
+      font-size: 14px;
+      display: none;
+    }
+    .msg.ok {
+      background: #dcfce7;
+      color: #166534;
+      display: block;
+    }
+    .msg.error {
+      background: #fee2e2;
+      color: #991b1b;
+      display: block;
+    }
+    .pass-gate {
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="gate" class="card pass-gate">
+    <h1>Panel interno</h1>
+    <p class="subtitle">Ingresá la clave para continuar</p>
+    <input type="password" id="gate-password" placeholder="Clave" />
+    <button onclick="unlockPanel()">Entrar</button>
+    <div id="gate-msg" class="msg"></div>
+  </div>
+
+  <div id="panel" style="display:none;">
+    <h1>Cargar reserva manual</h1>
+    <p class="subtitle">Completá esto cada vez que cargues una reserva a mano en Wubook</p>
+
+    <div class="card">
+      <label for="wubook_id">Código de reserva (Wubook)</label>
+      <input type="text" id="wubook_id" placeholder="Ej: DV-0005" />
+
+      <label for="ref_code" class="optional">Código de referencia del cliente</label>
+      <input type="text" id="ref_code" placeholder="Ej: 7K4M9 (si lo mandó por WhatsApp)" />
+
+      <label for="phone_hint" class="optional">Teléfono del huésped</label>
+      <input type="text" id="phone_hint" placeholder="Ej: +54 9 11 1234-5678" />
+
+      <label for="note" class="optional">Nota</label>
+      <input type="text" id="note" placeholder="Cualquier otro dato útil" />
+
+      <button id="submit-btn" onclick="submitNote()">Guardar</button>
+      <div id="submit-msg" class="msg"></div>
+    </div>
+  </div>
+
+  <script>
+    let savedPassword = '';
+
+    function unlockPanel() {
+      const pass = document.getElementById('gate-password').value;
+      if (!pass) return;
+      savedPassword = pass;
+      document.getElementById('gate').style.display = 'none';
+      document.getElementById('panel').style.display = 'block';
+    }
+
+    async function submitNote() {
+      const wubook_id_human = document.getElementById('wubook_id').value.trim();
+      const ref_code = document.getElementById('ref_code').value.trim();
+      const phone_hint = document.getElementById('phone_hint').value.trim();
+      const note = document.getElementById('note').value.trim();
+      const msgEl = document.getElementById('submit-msg');
+      const btn = document.getElementById('submit-btn');
+
+      msgEl.className = 'msg';
+      msgEl.textContent = '';
+
+      if (!wubook_id_human) {
+        msgEl.className = 'msg error';
+        msgEl.textContent = 'Falta el código de reserva.';
+        return;
+      }
+
+      btn.disabled = true;
+      btn.textContent = 'Guardando...';
+
+      try {
+        const res = await fetch('/api/manual-note', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            secret: savedPassword,
+            wubook_id_human,
+            ref_code,
+            phone_hint,
+            note,
+          }),
+        });
+
+        const data = await res.json();
+
+        if (!res.ok) {
+          msgEl.className = 'msg error';
+          msgEl.textContent = data.error || 'Ocurrió un error.';
+        } else {
+          msgEl.className = 'msg ok';
+          msgEl.textContent = 'Guardado correctamente.';
+          document.getElementById('wubook_id').value = '';
+          document.getElementById('ref_code').value = '';
+          document.getElementById('phone_hint').value = '';
+          document.getElementById('note').value = '';
+        }
+      } catch (err) {
+        msgEl.className = 'msg error';
+        msgEl.textContent = 'Error de conexión.';
+      } finally {
+        btn.disabled = false;
+        btn.textContent = 'Guardar';
+      }
+    }
+
+    document.getElementById('gate-password').addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') unlockPanel();
+    });
+  </script>
+
+</body>
+</html>
