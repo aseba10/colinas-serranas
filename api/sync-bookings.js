@@ -162,6 +162,19 @@ export default async function handler(req, res) {
     let errors = 0;
 
     for (const booking of allBookings) {
+      let phone = null;
+      let email = null;
+
+      try {
+        const customer = await fetchCustomer(booking.booker);
+        phone = customer?.contacts?.phone || null;
+        email = customer?.contacts?.email || null;
+      } catch (custErr) {
+        // Si falla la búsqueda del cliente, guardamos igual la reserva sin
+        // teléfono/email — no queremos perder el resto del dato por esto.
+        console.warn('No se pudo traer el cliente de', booking.id_human, custErr.message);
+      }
+
       const row = {
         wubook_id_human: booking.id_human,
         channel: booking.origin?.channel || null,
@@ -169,6 +182,8 @@ export default async function handler(req, res) {
         value: booking.price?.total ?? null,
         currency: booking.currency || null,
         confirmed_at: parseWubookDate(booking.created),
+        phone,
+        email,
       };
 
       const { error } = await supabase
