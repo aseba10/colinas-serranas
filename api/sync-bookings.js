@@ -23,6 +23,28 @@ function formatDateForWubook(date) {
   return `${dd}/${mm}/${yyyy}`;
 }
 
+// Wubook devuelve fechas en formato "dd/mm/yyyy" o "dd/mm/yyyy hh:mm:ss".
+// Postgres, sin esta conversión, puede interpretarlas como mm/dd/yyyy y
+// fallar (o peor, guardar la fecha equivocada silenciosamente). Convertimos
+// siempre a ISO 8601 antes de mandarlas a Supabase.
+function parseWubookDate(value) {
+  if (!value) return null;
+
+  const match = value.match(
+    /^(\d{2})\/(\d{2})\/(\d{4})(?:\s+(\d{2}):(\d{2}):(\d{2}))?$/
+  );
+
+  if (!match) {
+    // No matchea el formato esperado — devolvemos null en vez de arriesgar
+    // un valor mal interpretado.
+    console.warn('Fecha de Wubook con formato inesperado:', value);
+    return null;
+  }
+
+  const [, dd, mm, yyyy, hh = '00', min = '00', ss = '00'] = match;
+  return `${yyyy}-${mm}-${dd}T${hh}:${min}:${ss}Z`;
+}
+
 async function fetchReservationsPage(fromDate, toDate, offset, limit) {
   const filters = JSON.stringify({
     created: { from: fromDate, to: toDate },
@@ -55,7 +77,7 @@ export default async function handler(req, res) {
     return res.status(405).json({ error: 'Method not allowed' });
   }
 
-  const { secret, days } = req.query;
+  const { secret, days, debug } = req.query;
 
   if (!secret || secret !== process.env.SYNC_SECRET) {
     return res.status(401).json({ error: 'No autorizado' });
@@ -82,6 +104,17 @@ export default async function handler(req, res) {
       offset += limit;
     } while (page.length === limit);
 
+    // Modo diagnóstico: devuelve los datos crudos tal cual los manda Wubook,
+    // sin procesar ni guardar nada, para poder ver los nombres de campo reales.
+    if (debug === '1') {
+      return res.status(200).json({
+        status: 'debug',
+        total_encontradas: allBookings.length,
+        primera_reserva_cruda: allBookings[0] || null,
+      });
+    }
+
+
     let saved = 0;
     let errors = 0;
 
@@ -92,7 +125,7 @@ export default async function handler(req, res) {
         status: booking.status || null,
         value: booking.price?.total ?? null,
         currency: booking.currency || null,
-        confirmed_at: booking.created || null,
+        confirmed_at: parseWubookDate(booking.created),
       };
 
       const { error } = await supabase
