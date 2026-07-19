@@ -2,9 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from '@/App';
 import '@/index.css';
-import { captureAttributionParams } from '@/lib/attribution';
+import { initAttribution } from '@/lib/attribution';
 
-captureAttributionParams();
+initAttribution();
 
 ReactDOM.createRoot(document.getElementById('root')).render(
 	<App />
