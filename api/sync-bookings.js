@@ -69,7 +69,7 @@ async function fetchReservationsPage(fromDate, toDate, offset, limit) {
     throw new Error(`Error de Wubook API: ${JSON.stringify(json.error)}`);
   }
 
-  return json.data?.bookings || json.data || [];
+  return json.data?.reservations || [];
 }
 
 export default async function handler(req, res) {
