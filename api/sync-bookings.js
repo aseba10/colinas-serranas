@@ -72,6 +72,28 @@ async function fetchReservationsPage(fromDate, toDate, offset, limit) {
   return json.data?.reservations || [];
 }
 
+async function fetchCustomer(customerId) {
+  const body = new URLSearchParams();
+  body.set('id', customerId);
+
+  const response = await fetch('https://kapi.wubook.net/kp/customers/fetch_one', {
+    method: 'POST',
+    headers: {
+      'x-api-key': process.env.WUBOOK_API_KEY,
+      'Content-Type': 'application/x-www-form-urlencoded',
+    },
+    body: body.toString(),
+  });
+
+  const json = await response.json();
+
+  if (json.error) {
+    throw new Error(`Error de Wubook API (customer): ${JSON.stringify(json.error)}`);
+  }
+
+  return json.data;
+}
+
 export default async function handler(req, res) {
   if (req.method !== 'GET') {
     return res.status(405).json({ error: 'Method not allowed' });
@@ -82,6 +104,27 @@ export default async function handler(req, res) {
   if (!secret || secret !== process.env.SYNC_SECRET) {
     return res.status(401).json({ error: 'No autorizado' });
   }
+
+  // Modo diagnóstico 2: trae el objeto crudo de un cliente, para confirmar
+  // los nombres de campo reales (phone, email, etc.) antes de guardarlos.
+  if (debug === '2') {
+    const daysBack2 = parseInt(days, 10) || 30;
+    const toDate2 = new Date();
+    const fromDate2 = new Date();
+    fromDate2.setDate(fromDate2.getDate() - daysBack2);
+    const page2 = await fetchReservationsPage(
+      formatDateForWubook(fromDate2),
+      formatDateForWubook(toDate2),
+      0,
+      1
+    );
+    if (!page2[0]) {
+      return res.status(200).json({ status: 'debug2', mensaje: 'No hay reservas para probar' });
+    }
+    const customer = await fetchCustomer(page2[0].booker);
+    return res.status(200).json({ status: 'debug2', booking: page2[0].id_human, cliente_crudo: customer });
+  }
+
 
   const daysBack = parseInt(days, 10) || 30;
 
