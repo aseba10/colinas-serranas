@@ -64,6 +64,7 @@ export default async function handler(req, res) {
 
     let sent = 0;
     let skipped = 0;
+    let tooOld = 0;
     let errors = 0;
 
     for (const booking of bookings) {
@@ -122,8 +123,16 @@ export default async function handler(req, res) {
         const json = await response.json();
 
         if (!response.ok || json.error) {
-          console.error('Error de Meta para', booking.wubook_id_human, json.error || json);
-          errors++;
+          if (json.error?.error_subcode === 2804003) {
+            // "Event Timestamp Too Old" — Meta exige que el evento se mande
+            // dentro de los 7 días de haber ocurrido. No es un error nuestro,
+            // es una limitación real de la API: hay que correr este envío
+            // seguido para no perder esa ventana.
+            tooOld++;
+          } else {
+            console.error('Error de Meta para', booking.wubook_id_human, json.error || json);
+            errors++;
+          }
         } else {
           sent++;
         }
@@ -138,6 +147,7 @@ export default async function handler(req, res) {
       total_con_telefono: bookings.length,
       enviados: sent,
       omitidos_sin_telefono: skipped,
+      omitidos_por_antiguedad: tooOld,
       errores: errors,
     });
   } catch (err) {
