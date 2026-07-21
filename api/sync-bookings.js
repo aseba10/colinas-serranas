@@ -169,6 +169,9 @@ export default async function handler(req, res) {
         const customer = await fetchCustomer(booking.booker);
         phone = customer?.contacts?.phone || null;
         email = customer?.contacts?.email || null;
+        console.log(
+          `[sync-bookings] ${booking.id_human} booker=${booking.booker} phone=${phone} email=${email}`
+        );
       } catch (custErr) {
         // Si falla la búsqueda del cliente, guardamos igual la reserva sin
         // teléfono/email — no queremos perder el resto del dato por esto.
