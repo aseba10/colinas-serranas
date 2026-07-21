@@ -1,0 +1,147 @@
+// api/send-meta-conversions.js
+//
+// Envía eventos "Purchase" a Meta Conversions API para las reservas
+// confirmadas que tengan teléfono. Meta hace su propio matching del lado de
+// ellos usando el teléfono hasheado (señal fuerte, ya que viene directo de
+// la conversación de WhatsApp) y, si lo tenemos, el fbclid capturado vía
+// nuestra reconciliación por ref_code.
+//
+// Uso: GET /api/send-meta-conversions?secret=TU_SYNC_SECRET
+
+import { createClient } from '@supabase/supabase-js';
+import { createHash } from 'crypto';
+
+const supabase = createClient(
+  process.env.SUPABASE_URL,
+  process.env.SUPABASE_SERVICE_ROLE_KEY
+);
+
+const META_DATASET_ID = '25972841082385250';
+const META_API_VERSION = 'v21.0';
+
+function sha256(value) {
+  return createHash('sha256').update(value).digest('hex');
+}
+
+// Meta espera el teléfono en formato E.164 (con código de país), sin '+',
+// espacios, guiones ni ceros a la izquierda, antes de hashear.
+function normalizePhone(raw) {
+  if (!raw) return null;
+  const digitsOnly = raw.replace(/\D/g, '');
+  return digitsOnly || null;
+}
+
+export default async function handler(req, res) {
+  if (req.method !== 'GET') {
+    return res.status(405).json({ error: 'Method not allowed' });
+  }
+
+  const { secret } = req.query;
+  if (!secret || secret !== process.env.SYNC_SECRET) {
+    return res.status(401).json({ error: 'No autorizado' });
+  }
+
+  try {
+    // Traemos las reservas con teléfono
+    const { data: bookings, error: bookingsError } = await supabase
+      .from('bookings')
+      .select('wubook_id_human, phone, email, value, currency, confirmed_at, status')
+      .not('phone', 'is', null)
+      .eq('status', 'Confirmed');
+
+    if (bookingsError) throw bookingsError;
+
+    // Traemos fbclid conocido (si nuestra reconciliación lo encontró) para
+    // sumarlo como señal extra cuando esté disponible
+    const { data: snapshots } = await supabase
+      .from('ad_source_snapshot')
+      .select('wubook_id_human, fbclid');
+
+    const fbclidByBooking = {};
+    (snapshots || []).forEach((s) => {
+      if (s.fbclid) fbclidByBooking[s.wubook_id_human] = s.fbclid;
+    });
+
+    let sent = 0;
+    let skipped = 0;
+    let errors = 0;
+
+    for (const booking of bookings) {
+      const normalizedPhone = normalizePhone(booking.phone);
+      if (!normalizedPhone) {
+        skipped++;
+        continue;
+      }
+
+      const eventTime = booking.confirmed_at
+        ? Math.floor(new Date(booking.confirmed_at).getTime() / 1000)
+        : Math.floor(Date.now() / 1000);
+
+      const userData = {
+        ph: [sha256(normalizedPhone)],
+      };
+
+      if (booking.email) {
+        userData.em = [sha256(booking.email.trim().toLowerCase())];
+      }
+
+      const fbclid = fbclidByBooking[booking.wubook_id_human];
+      if (fbclid) {
+        // Meta espera el fbc en un formato específico, no el fbclid crudo.
+        // Formato: fb.1.<timestamp>.<fbclid>
+        userData.fbc = `fb.1.${eventTime}.${fbclid}`;
+      }
+
+      const eventPayload = {
+        data: [
+          {
+            event_name: 'Purchase',
+            event_time: eventTime,
+            event_id: booking.wubook_id_human, // para deduplicar si se corre 2 veces
+            action_source: 'system_generated',
+            user_data: userData,
+            custom_data: {
+              value: booking.value,
+              currency: (booking.currency || 'ARS').toUpperCase(),
+              order_id: booking.wubook_id_human,
+            },
+          },
+        ],
+      };
+
+      try {
+        const response = await fetch(
+          `https://graph.facebook.com/${META_API_VERSION}/${META_DATASET_ID}/events?access_token=${process.env.META_CAPI_ACCESS_TOKEN}`,
+          {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(eventPayload),
+          }
+        );
+
+        const json = await response.json();
+
+        if (!response.ok || json.error) {
+          console.error('Error de Meta para', booking.wubook_id_human, json.error || json);
+          errors++;
+        } else {
+          sent++;
+        }
+      } catch (err) {
+        console.error('Error de red enviando a Meta:', booking.wubook_id_human, err);
+        errors++;
+      }
+    }
+
+    return res.status(200).json({
+      status: 'ok',
+      total_con_telefono: bookings.length,
+      enviados: sent,
+      omitidos_sin_telefono: skipped,
+      errores: errors,
+    });
+  } catch (err) {
+    console.error('Error en send-meta-conversions:', err);
+    return res.status(500).json({ error: err.message || 'Error interno' });
+  }
+}
