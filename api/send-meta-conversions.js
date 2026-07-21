@@ -47,7 +47,7 @@ export default async function handler(req, res) {
       .from('bookings')
       .select('wubook_id_human, phone, email, value, currency, confirmed_at, status')
       .not('phone', 'is', null)
-      .eq('status', 'Confirmed');
+      .in('status', ['Confirmed', 'Option']);
 
     if (bookingsError) throw bookingsError;
 
