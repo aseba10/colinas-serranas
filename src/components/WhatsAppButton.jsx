@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { MessageCircle } from 'lucide-react';
-import { getOrCreateVisitorId } from '@/lib/attribution';
+import { getOrCreateWhatsAppRefCode } from '@/lib/attribution';
 
 function WhatsAppButton({ text = 'Consultar por WhatsApp', className = '', message = '' }) {
   const phoneNumber = '5492494467441';
@@ -10,24 +10,17 @@ function WhatsAppButton({ text = 'Consultar por WhatsApp', className = '', messa
   const [refCode, setRefCode] = useState(null);
 
   useEffect(() => {
-    const visitorId = getOrCreateVisitorId();
+    let cancelled = false;
 
-    fetch('/api/whatsapp-click', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ visitor_id: visitorId }),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        if (data && data.ref_code) {
-          setRefCode(data.ref_code);
-        }
-      })
-      .catch((err) => {
-        // Si falla, el botón sigue funcionando igual, solo que sin código de
-        // referencia en el mensaje.
-        console.warn('No se pudo generar el ref_code de WhatsApp:', err);
-      });
+    getOrCreateWhatsAppRefCode().then((code) => {
+      if (!cancelled && code) {
+        setRefCode(code);
+      }
+    });
+
+    return () => {
+      cancelled = true;
+    };
   }, []);
 
   const baseMessage = message || defaultMessage;

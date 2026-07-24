@@ -133,6 +133,48 @@ export function appendAttributionParams(baseUrl) {
 }
 
 // ---------------------------------------------------------------------------
+// Código de referencia de WhatsApp (una sola vez por sesión, no por cada
+// montaje de un botón — se cachea en sessionStorage para sobrevivir la
+// navegación entre páginas del sitio)
+// ---------------------------------------------------------------------------
+
+const WHATSAPP_REFCODE_KEY = 'whatsapp_ref_code';
+
+export async function getOrCreateWhatsAppRefCode() {
+  try {
+    const cached = sessionStorage.getItem(WHATSAPP_REFCODE_KEY);
+    if (cached) return cached;
+  } catch (err) {
+    // seguimos igual, en el peor caso pedimos uno nuevo
+  }
+
+  const visitorId = getOrCreateVisitorId();
+
+  try {
+    const response = await fetch('/api/whatsapp-click', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ visitor_id: visitorId }),
+    });
+    const data = await response.json();
+
+    if (data && data.ref_code) {
+      try {
+        sessionStorage.setItem(WHATSAPP_REFCODE_KEY, data.ref_code);
+      } catch (err) {
+        // si sessionStorage falla, el código igual se devuelve para este uso,
+        // simplemente no va a poder cachearse para la próxima página
+      }
+      return data.ref_code;
+    }
+  } catch (err) {
+    console.warn('No se pudo generar el ref_code de WhatsApp:', err);
+  }
+
+  return null;
+}
+
+// ---------------------------------------------------------------------------
 // Envío al backend propio (/api/track)
 // ---------------------------------------------------------------------------
 

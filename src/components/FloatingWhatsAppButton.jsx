@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { MessageCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { motion } from 'framer-motion';
-import { getOrCreateVisitorId } from '@/lib/attribution';
+import { getOrCreateWhatsAppRefCode } from '@/lib/attribution';
 
 function FloatingWhatsAppButton() {
   const phoneNumber = '5492494467441';
@@ -11,22 +11,17 @@ function FloatingWhatsAppButton() {
   const [refCode, setRefCode] = useState(null);
 
   useEffect(() => {
-    const visitorId = getOrCreateVisitorId();
+    let cancelled = false;
 
-    fetch('/api/whatsapp-click', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ visitor_id: visitorId }),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        if (data && data.ref_code) {
-          setRefCode(data.ref_code);
-        }
-      })
-      .catch((err) => {
-        console.warn('No se pudo generar el ref_code de WhatsApp:', err);
-      });
+    getOrCreateWhatsAppRefCode().then((code) => {
+      if (!cancelled && code) {
+        setRefCode(code);
+      }
+    });
+
+    return () => {
+      cancelled = true;
+    };
   }, []);
 
   const finalMessage = refCode ? `${baseMessage} (ref: ${refCode})` : baseMessage;
