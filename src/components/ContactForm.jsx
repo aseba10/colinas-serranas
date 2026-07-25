@@ -60,14 +60,9 @@ const handleSubmit = async (e) => {
       throw new Error('Error al enviar');
     }
 
-    // Registrar conversión en Google Ads
-    if (window.gtag) {
-      window.gtag('event', 'conversion', {
-        'value': 1.0,
-        'currency': 'ARS',
-        'transaction_id': Date.now()
-      });
-    }
+    // Avisar a GTM para la conversión específica de "envío de formulario de contacto"
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({ event: 'contact_form_submit' });
 
     toast.success(
       'Mensaje enviado correctamente. Te contactaremos pronto.'

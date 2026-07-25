@@ -6,14 +6,9 @@ function ReservationButton({ text = 'Reservar ahora', className = '', size = 'de
   const baseReservationUrl = 'https://wubook.net/nneb/bk?f=today&n=1&ep=45e55843&board=bb&o=1.0.0.0';
 
   const handleReservationClick = () => {
-    // Registrar conversión en Google Ads
-    if (window.gtag) {
-      window.gtag('event', 'conversion', {
-        'value': 1.0,
-        'currency': 'ARS',
-        'transaction_id': Date.now()
-      });
-    }
+    // Avisar a GTM para la conversión específica de "ingreso al motor de reservas"
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({ event: 'motor_reservas_click' });
   };
 
   // Se agregan los parámetros de campaña (gclid, fbclid, UTMs) guardados al

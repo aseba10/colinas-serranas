@@ -185,6 +185,10 @@ return (
                 href={reservationUrl}
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={() => {
+                  window.dataLayer = window.dataLayer || [];
+                  window.dataLayer.push({ event: 'motor_reservas_click' });
+                }}
               >
                 Reservar ahora
               </a>
