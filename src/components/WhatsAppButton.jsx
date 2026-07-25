@@ -37,6 +37,10 @@ function WhatsAppButton({ text = 'Consultar por WhatsApp', className = '', messa
         'transaction_id': Date.now()
       });
     }
+
+    // Avisar a GTM para que dispare el evento de Meta Pixel (Contact)
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({ event: 'whatsapp_click_meta' });
   };
 
   return (
