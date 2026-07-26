@@ -147,7 +147,18 @@ export default async function handler(req, res) {
       offset += limit;
     } while (page.length === limit);
 
-    // Modo diagnóstico 4: muestra la respuesta CRUDA completa de Wubook (no
+    // Modo diagnóstico 5: prueba explícitamente si existe una "página 2" de
+  // resultados, pidiendo offset=8 con el mismo rango de fechas amplio.
+  if (debug === '5') {
+    const page5 = await fetchReservationsPage('27/01/2026', '26/07/2026', 8, 100);
+    return res.status(200).json({
+      status: 'debug5',
+      total_en_offset_8: page5.length,
+      codigos: page5.map((b) => ({ id_human: b.id_human, created: b.created })),
+    });
+  }
+
+  // Modo diagnóstico 4: muestra la respuesta CRUDA completa de Wubook (no
   // solo el array de reservations), para revisar si hay algún campo de
   // metadata de paginación (total, has_more, etc.) que no estemos usando.
   if (debug === '4') {
