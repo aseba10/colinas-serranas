@@ -140,12 +140,21 @@ export default async function handler(req, res) {
     let offset = 0;
     let allBookings = [];
     let page;
+    let safetyCounter = 0;
 
     do {
       page = await fetchReservationsPage(fromStr, toStr, offset, limit);
       allBookings = allBookings.concat(page);
-      offset += limit;
-    } while (page.length === limit);
+      offset += page.length; // avanzar por lo que REALMENTE devolvió Wubook,
+                               // no por el "limit" que pedimos (Wubook parece
+                               // ignorar nuestro limit y devolver siempre
+                               // páginas más chicas, tipo 8 por vez)
+      safetyCounter++;
+      if (safetyCounter > 200) {
+        console.warn('sync-bookings: corte de seguridad en la paginación (200 páginas)');
+        break;
+      }
+    } while (page.length > 0);
 
     // Modo diagnóstico 5: prueba explícitamente si existe una "página 2" de
   // resultados, pidiendo offset=8 con el mismo rango de fechas amplio.
@@ -210,12 +219,15 @@ export default async function handler(req, res) {
     let offset3 = 0;
     let allBookings3 = [];
     let page3;
+    let safetyCounter3 = 0;
 
     do {
       page3 = await fetchReservationsPage(fromStr3, toStr3, offset3, limit3);
       allBookings3 = allBookings3.concat(page3);
-      offset3 += limit3;
-    } while (page3.length === limit3);
+      offset3 += page3.length;
+      safetyCounter3++;
+      if (safetyCounter3 > 200) break;
+    } while (page3.length > 0);
 
     return res.status(200).json({
       status: 'debug3',
