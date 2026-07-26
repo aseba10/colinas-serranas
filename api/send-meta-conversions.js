@@ -25,10 +25,33 @@ function sha256(value) {
 
 // Meta espera el teléfono en formato E.164 (con código de país), sin '+',
 // espacios, guiones ni ceros a la izquierda, antes de hashear.
+//
+// Wubook guarda los teléfonos con formatos inconsistentes: a veces con "+54"
+// adelante, a veces sin nada (solo el número local). Esta función intenta
+// normalizar los casos más comunes de Argentina:
+//   - 10 dígitos sin código de país (ej "1133333333")           -> se asume
+//     celular y se le agrega "549" adelante (formato E.164 celular AR).
+//   - Ya empieza con "54" y tiene 12 dígitos (falta el "9" del celular)
+//     -> se le inserta el "9" después del "54" (mejor esfuerzo: asumimos
+//     celular, que es lo más probable en reservas hechas por WhatsApp).
+//   - Ya viene completo (13 dígitos empezando con "549") -> se deja igual.
+// No es 100% infalible (no hay forma de saber con certeza si un número es
+// fijo o celular solo mirando los dígitos), pero cubre la gran mayoría de
+// los casos reales que vimos en los datos.
 function normalizePhone(raw) {
   if (!raw) return null;
   const digitsOnly = raw.replace(/\D/g, '');
-  return digitsOnly || null;
+  if (!digitsOnly) return null;
+
+  if (digitsOnly.length === 10) {
+    return `549${digitsOnly}`;
+  }
+
+  if (digitsOnly.startsWith('54') && digitsOnly.length === 12) {
+    return `549${digitsOnly.slice(2)}`;
+  }
+
+  return digitsOnly;
 }
 
 export default async function handler(req, res) {
@@ -134,6 +157,10 @@ export default async function handler(req, res) {
             errors++;
           }
         } else {
+          console.log(
+            `[send-meta-conversions] ${booking.wubook_id_human} respuesta de Meta:`,
+            JSON.stringify(json)
+          );
           sent++;
         }
       } catch (err) {
