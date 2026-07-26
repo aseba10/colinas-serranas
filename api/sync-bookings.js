@@ -147,7 +147,38 @@ export default async function handler(req, res) {
       offset += limit;
     } while (page.length === limit);
 
-    // Modo diagnóstico: devuelve los datos crudos tal cual los manda Wubook,
+    // Modo diagnóstico 3: lista todos los id_human encontrados (sin guardar
+  // nada), para revisar si faltan códigos específicos o si el total parece
+  // bajo para el rango de fechas pedido.
+  if (debug === '3') {
+    const daysBack3 = parseInt(days, 10) || 30;
+    const toDate3 = new Date();
+    const fromDate3 = new Date();
+    fromDate3.setDate(fromDate3.getDate() - daysBack3);
+
+    const fromStr3 = formatDateForWubook(fromDate3);
+    const toStr3 = formatDateForWubook(toDate3);
+
+    const limit3 = 100;
+    let offset3 = 0;
+    let allBookings3 = [];
+    let page3;
+
+    do {
+      page3 = await fetchReservationsPage(fromStr3, toStr3, offset3, limit3);
+      allBookings3 = allBookings3.concat(page3);
+      offset3 += limit3;
+    } while (page3.length === limit3);
+
+    return res.status(200).json({
+      status: 'debug3',
+      rango: { desde: fromStr3, hasta: toStr3 },
+      total: allBookings3.length,
+      codigos: allBookings3.map((b) => ({ id_human: b.id_human, created: b.created, status: b.status })),
+    });
+  }
+
+  // Modo diagnóstico: devuelve los datos crudos tal cual los manda Wubook,
     // sin procesar ni guardar nada, para poder ver los nombres de campo reales.
     if (debug === '1') {
       return res.status(200).json({
