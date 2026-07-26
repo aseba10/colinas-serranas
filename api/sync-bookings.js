@@ -147,7 +147,43 @@ export default async function handler(req, res) {
       offset += limit;
     } while (page.length === limit);
 
-    // Modo diagnóstico 3: lista todos los id_human encontrados (sin guardar
+    // Modo diagnóstico 4: muestra la respuesta CRUDA completa de Wubook (no
+  // solo el array de reservations), para revisar si hay algún campo de
+  // metadata de paginación (total, has_more, etc.) que no estemos usando.
+  if (debug === '4') {
+    const filters4 = JSON.stringify({
+      created: { from: '27/01/2026', to: '26/07/2026' },
+      pager: { limit: 100, offset: 0 },
+    });
+    const body4 = new URLSearchParams();
+    body4.set('filters', filters4);
+
+    const response4 = await fetch(WUBOOK_API_URL, {
+      method: 'POST',
+      headers: {
+        'x-api-key': process.env.WUBOOK_API_KEY,
+        'Content-Type': 'application/x-www-form-urlencoded',
+      },
+      body: body4.toString(),
+    });
+    const json4 = await response4.json();
+
+    // Sacamos el array de reservations para no mandar un JSON gigante,
+    // pero mostramos todo lo demás (metadata) tal cual.
+    const { data, ...rest } = json4;
+    let dataSummary = data;
+    if (data && data.reservations) {
+      dataSummary = { ...data, reservations: `[array de ${data.reservations.length} elementos, omitido]` };
+    }
+
+    return res.status(200).json({
+      status: 'debug4',
+      resto_de_la_respuesta: rest,
+      data_resumido: dataSummary,
+    });
+  }
+
+  // Modo diagnóstico 3: lista todos los id_human encontrados (sin guardar
   // nada), para revisar si faltan códigos específicos o si el total parece
   // bajo para el rango de fechas pedido.
   if (debug === '3') {
