@@ -31,6 +31,41 @@ export default async function handler(req, res) {
 
     if (error) throw error;
 
+    // Reservas recientes (últimos 60 días) sin ninguna nota cargada en el
+    // panel — candidatas a revisar. No distingue motor vs. manual (Wubook no
+    // lo informa de forma confiable), así que puede incluir reservas del
+    // motor que no necesitan nota; el operador debe usar su criterio.
+    const sixtyDaysAgo = new Date();
+    sixtyDaysAgo.setDate(sixtyDaysAgo.getDate() - 60);
+
+    const { data: recentBookings, error: bookingsError } = await supabase
+      .from('bookings')
+      .select('wubook_id_human, phone, value, currency, confirmed_at, status')
+      .neq('status', 'Cancelled')
+      .gte('confirmed_at', sixtyDaysAgo.toISOString())
+      .order('confirmed_at', { ascending: false });
+
+    if (bookingsError) throw bookingsError;
+
+    const { data: notes, error: notesError } = await supabase
+      .from('manual_notes')
+      .select('wubook_id_human');
+
+    if (notesError) throw notesError;
+
+    const notedIds = new Set((notes || []).map((n) => n.wubook_id_human));
+
+    const pendientes_revision = (recentBookings || [])
+      .filter((b) => !notedIds.has(b.wubook_id_human))
+      .map((b) => ({
+        wubook_id_human: b.wubook_id_human,
+        phone: b.phone,
+        value: b.value,
+        currency: b.currency,
+        confirmed_at: b.confirmed_at,
+        status: b.status,
+      }));
+
     const total_reservas = rows.length;
     const total_valor = rows.reduce((sum, r) => sum + (Number(r.value) || 0), 0);
     const currency = rows.find((r) => r.currency)?.currency || 'ARS';
@@ -71,6 +106,7 @@ export default async function handler(req, res) {
       pct_unknown,
       por_utm_source,
       reservas,
+      pendientes_revision,
     });
   } catch (err) {
     console.error('Error en dashboard-data:', err);

@@ -179,6 +179,26 @@
       });
       html += '</tbody></table></div>';
 
+      // Pendientes de revisión (sin nota cargada, últimos 60 días)
+      html += '<div class="section"><h2>⚠️ Reservas recientes sin nota cargada (últimos 60 días)</h2>';
+      html += '<p style="color:#78716c; font-size:13px; margin-top:-6px;">Esta lista no distingue motor de reserva manual — revisá cuáles corresponde cargar en el panel.</p>';
+      if (data.pendientes_revision.length === 0) {
+        html += '<p style="color:#15803d;">Ninguna reserva pendiente — todo al día.</p>';
+      } else {
+        html += '<table><thead><tr><th>Reserva</th><th>Teléfono</th><th>Valor</th><th>Fecha</th><th>Estado</th></tr></thead><tbody>';
+        data.pendientes_revision.forEach((p) => {
+          html += `<tr>
+            <td>${escapeHtml(p.wubook_id_human)}</td>
+            <td>${escapeHtml(p.phone || '-')}</td>
+            <td>${formatMoney(p.value, p.currency)}</td>
+            <td>${formatDate(p.confirmed_at)}</td>
+            <td>${escapeHtml(p.status)}</td>
+          </tr>`;
+        });
+        html += '</tbody></table>';
+      }
+      html += '</div>';
+
       body.innerHTML = html;
     }
 
