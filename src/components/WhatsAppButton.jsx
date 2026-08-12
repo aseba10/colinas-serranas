@@ -36,11 +36,14 @@ function WhatsAppButton({ text = 'Consultar por WhatsApp', className = '', messa
 
   const handleWhatsAppClick = () => {
     // event_id compartido entre el pixel del browser (vía GTM) y Meta CAPI
-    // (server-side, en /api/whatsapp-click) para que Meta deduplique el
-    // mismo clic en vez de contarlo dos veces.
+    // (server-side) para que Meta deduplique el mismo clic en vez de
+    // contarlo dos veces. Se genera de nuevo en CADA clic (a diferencia del
+    // ref_code, que se cachea una vez por sesión) porque cada clic es un
+    // evento de "Contact" real que Meta debe recibir por separado.
     const eventId = (crypto.randomUUID && crypto.randomUUID()) || `${Date.now()}-${Math.random()}`;
     const fbc = getCookie('_fbc');
     const fbp = getCookie('_fbp');
+    const eventSourceUrl = window.location.href;
 
     // Registrar conversión en Google Ads
     if (window.gtag) {
@@ -51,21 +54,31 @@ function WhatsAppButton({ text = 'Consultar por WhatsApp', className = '', messa
       });
     }
 
-    // Avisar a GTM para que dispare el evento de Meta Pixel (Contact),
-    // pasando el event_id y fbc/fbp para que el tag de Meta en GTM los
-    // use como eventID (dedup) y, si hace falta, como respaldo.
+    // Avisar a GTM para que dispare el evento de Meta Pixel (Contact) del
+    // lado del browser, pasando el mismo event_id para que el tag de Meta
+    // en GTM lo use como eventID (dedup con el envío server-side de abajo).
     window.dataLayer = window.dataLayer || [];
     window.dataLayer.push({
       event: 'whatsapp_click_meta',
       meta_event_id: eventId,
-      meta_fbc: fbc,
-      meta_fbp: fbp,
     });
 
-    // TODO: pasar { event_id: eventId, fbc, fbp, event_source_url: window.location.href }
-    // a getOrCreateWhatsAppRefCode() (o a una llamada separada) para que
-    // lib/attribution.js se los reenvíe a /api/whatsapp-click y así se
-    // dispare el envío a Meta CAPI del lado servidor con el mismo event_id.
+    // Envío server-side a Meta CAPI, en cada clic real (no cacheado, a
+    // diferencia del ref_code). Fire-and-forget con keepalive para que no
+    // se corte si el navegador ya está navegando hacia wa.me.
+    fetch('/api/whatsapp-contact-event', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        event_id: eventId,
+        fbc,
+        fbp,
+        event_source_url: eventSourceUrl,
+      }),
+      keepalive: true,
+    }).catch((err) => {
+      console.warn('No se pudo enviar el evento Contact a Meta CAPI:', err);
+    });
   };
 
   return (

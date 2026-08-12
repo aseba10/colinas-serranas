@@ -149,21 +149,12 @@ const WHATSAPP_REFCODE_KEY = 'whatsapp_ref_code';
 let inFlightRequest = null;
 
 /**
- * Obtiene (o crea) el ref_code de WhatsApp para esta sesión.
- *
- * meta (opcional): datos para que el backend envíe el evento "Contact" a
- * Meta CAPI del lado servidor, deduplicado con el pixel del browser.
- *   - event_id: mismo id que se usa en fbq('track', 'Contact', {}, {eventID})
- *   - fbc / fbp: cookies _fbc / _fbp del navegador
- *   - event_source_url: window.location.href
- *
- * Nota: como la promesa está compartida entre botones (inFlightRequest),
- * si dos botones se clickean casi a la vez el meta del segundo llamado se
- * ignora silenciosamente (se sirve el resultado del primero, ya en vuelo).
- * En la práctica un usuario clickea un solo botón por vez, así que no es
- * un problema real — pero vale saberlo.
+ * Obtiene (o crea) el ref_code de WhatsApp para esta sesión. Se llama una
+ * sola vez por sesión (cacheado en sessionStorage) — el evento Contact a
+ * Meta CAPI NO depende de esto, se dispara aparte en cada clic real desde
+ * WhatsAppButton.jsx contra /api/whatsapp-contact-event.
  */
-export async function getOrCreateWhatsAppRefCode(meta = {}) {
+export async function getOrCreateWhatsAppRefCode() {
   try {
     const cached = sessionStorage.getItem(WHATSAPP_REFCODE_KEY);
     if (cached) return cached;
@@ -182,13 +173,7 @@ export async function getOrCreateWhatsAppRefCode(meta = {}) {
       const response = await fetch('/api/whatsapp-click', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          visitor_id: visitorId,
-          event_id: meta.event_id || null,
-          fbc: meta.fbc || null,
-          fbp: meta.fbp || null,
-          event_source_url: meta.event_source_url || null,
-        }),
+        body: JSON.stringify({ visitor_id: visitorId }),
       });
       const data = await response.json();
 
