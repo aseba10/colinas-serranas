@@ -4,5 +4,11 @@
       "source": "/(.*)",
       "destination": "/index.html"
     }
+  ],
+  "crons": [
+    {
+      "path": "/api/send-meta-conversions?secret=Colinas@6500",
+      "schedule": "0 9 * * *"
+    }
   ]
 }
