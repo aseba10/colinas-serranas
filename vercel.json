@@ -7,6 +7,10 @@
   ],
   "crons": [
     {
+      "path": "/api/sync-bookings?days=10&secret=Colinas@6500",
+      "schedule": "0 8 * * *"
+    },
+    {
       "path": "/api/send-meta-conversions?secret=Colinas@6500",
       "schedule": "0 9 * * *"
     }
